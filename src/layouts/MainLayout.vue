@@ -19,7 +19,13 @@
       </q-toolbar>
     </q-header>
 
-
+    <q-footer class="bg-white" bordered>
+      <q-tabs class="text-grey-10" active-color="primary" indicator-color="transparent"
+      >
+        <q-route-tab to="/" name="home" icon="home" label="Home" />
+        <q-route-tab to="/camera" name="camera" icon="photo_camera" label="Camera" />
+      </q-tabs>
+    </q-footer>
 
     <q-page-container>
       <router-view />

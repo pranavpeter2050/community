@@ -44,6 +44,36 @@ npm init quasar
 - `postcss.config.js` is used to add assets. Assets added here will not be processed by webpack (cross-check to ensure this point).
 - [Using **Vue dev tools**](https://youtu.be/9tyFBchdb00?list=PLAiDzIdBfy8h6HgfQg3namagsCUT0Y2Bs&t=559)
 
+## Changed the <script></script> tag in MainLayout.vue
+original lines
+```javascript
+export default defineComponent({
+  name: 'MainLayout',
+  components: {
+    ...
+  },
+  setup () {
+    const leftDrawerOpen = ref(false)
+    return {
+
+      ...
+
+    }
+  }
+})
+```
+
+New lines
+```javascript
+export default {
+  name: 'MainLayout',
+  data () {
+    return {
+    }
+  }
+}
+```
+
 ## Reference
 
 - [Create an Instagram Clone with Vue JS, Quasar & Firebase - in 4 HOURS! (1/6)](https://www.youtube.com/watch?v=9tyFBchdb00&list=PLAiDzIdBfy8h6HgfQg3namagsCUT0Y2Bs)

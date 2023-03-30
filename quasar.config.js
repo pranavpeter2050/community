@@ -14,7 +14,7 @@ const { configure } = require('quasar/wrappers');
 
 module.exports = configure(function (/* ctx */) {
   return {
-    
+
 
     // https://v2.quasar.dev/quasar-cli/prefetch-feature
     // preFetch: true,
@@ -23,7 +23,7 @@ module.exports = configure(function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli/boot-files
     boot: [
-      
+
       'axios',
     ],
 
@@ -37,7 +37,7 @@ module.exports = configure(function (/* ctx */) {
       // 'ionicons-v4',
       // 'mdi-v5',
       // 'fontawesome-v6',
-      // 'eva-icons',
+      'eva-icons',
       // 'themify',
       // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
@@ -72,7 +72,7 @@ module.exports = configure(function (/* ctx */) {
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
 
-      
+
       // vitePlugins: [
       //   [ 'package-name', { ..options.. } ]
       // ]

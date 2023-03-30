@@ -49,4 +49,5 @@ npm init quasar
 - [Create an Instagram Clone with Vue JS, Quasar & Firebase - in 4 HOURS! (1/6)](https://www.youtube.com/watch?v=9tyFBchdb00&list=PLAiDzIdBfy8h6HgfQg3namagsCUT0Y2Bs)
 - [Eva icons](https://akveo.github.io/eva-icons/#/)
 - [Using Eva icons](https://quasar.dev/vue-components/icon#webfont-usage)
-
+- [Google Fonts](https://fonts.google.com/)
+- [Grand Hotel - Google Font](https://fonts.google.com/share?selection.family=Grand+Hotel)

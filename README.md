@@ -77,6 +77,13 @@ export default {
 ## Formating how the "Date" is displayed in Quasar
 
 Quasar has in-built utility to help with the same. Click [here](https://quasar.dev/quasar-utils/date-utils#introduction) for more info.
+
+## [Classes “q-col-gutter-{size}”](https://quasar.dev/layout/grid/gutter#classes-q-col-gutter-size)
+
+These classes are to be used when the direct children have col-* or offset-* classes that specify a width.
+
+
+
 ## Reference
 
 - [Create an Instagram Clone with Vue JS, Quasar & Firebase - in 4 HOURS! (1/6)](https://www.youtube.com/watch?v=9tyFBchdb00&list=PLAiDzIdBfy8h6HgfQg3namagsCUT0Y2Bs)
@@ -87,3 +94,4 @@ Quasar has in-built utility to help with the same. Click [here](https://quasar.d
 - [Lorem Picsum](https://picsum.photos/)
 - [Random Image API](https://random.responsiveimages.io/)
 - [Pexels API - Documentation](https://www.pexels.com/api/documentation/#photos-overview)
+- [Classes “q-col-gutter-{size}”](https://quasar.dev/layout/grid/gutter#classes-q-col-gutter-size)

@@ -1,6 +1,6 @@
 <template>
   <q-page class="constrain q-pa-md">
-    <div class="row">
+    <div class="row q-col-gutter-lg">
       <div class="col-8">
         <q-card
           v-for="post in posts"

@@ -10,7 +10,7 @@
 
     <div class="row justify-center q-ma-md">
       <q-input
-        v-model="caption"
+        v-model="post.caption"
         class="col col-sm-8"
         label="Caption"
         dense
@@ -18,7 +18,7 @@
     </div>
     <div class="row justify-center q-ma-md">
       <q-input
-        v-model="location"
+        v-model="post.location"
         class="col col-sm-8"
         label="Location"
         dense
@@ -36,9 +36,21 @@
 
 <script>
 import { defineComponent } from 'vue'
+import { uid } from 'quasar'
 
 export default defineComponent({
-  name: 'CameraPage'
+  name: 'CameraPage',
+  data() {
+    return {
+      post: {
+        id: uid(),
+        caption: "",
+        location: "",
+        photo: null,
+        date: Date.now()
+      }
+    }
+  }
 })
 </script>
 

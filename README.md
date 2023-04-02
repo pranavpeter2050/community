@@ -90,6 +90,10 @@ These classes are to be used when the direct children have col-* or offset-* cla
 
 ## [Using Sass/SCSS Variables](https://quasar.dev/style/color-palette#using-sass-scss-variables)
 
+## Generating "Unique Id" for object inside data() function
+
+Quasar has in built Utility to generate Id. See [here](https://quasar.dev/quasar-utils/other-utils#uid-generate-uid).
+
 ## Reference
 
 - [Create an Instagram Clone with Vue JS, Quasar & Firebase - in 4 HOURS! (1/6)](https://www.youtube.com/watch?v=9tyFBchdb00&list=PLAiDzIdBfy8h6HgfQg3namagsCUT0Y2Bs)
@@ -103,3 +107,4 @@ These classes are to be used when the direct children have col-* or offset-* cla
 - [Classes “q-col-gutter-{size}”](https://quasar.dev/layout/grid/gutter#classes-q-col-gutter-size)
 - [Quasar - Other CSS Helper Classes](https://quasar.dev/style/other-helper-classes)
 - [Quasar - Color Palette](https://quasar.dev/style/color-palette)
+- [Quasar Utils/ Other Utils](https://quasar.dev/quasar-utils/other-utils)

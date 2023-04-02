@@ -2,7 +2,10 @@
   <q-layout view="lHh Lpr lFf">
     <q-header class="bg-white text-grey-10" bordered>
       <q-toolbar>
-        <q-btn flat round icon="eva-camera-outline" size="18px" dense to="/camera" class="large-screen-only"/>
+        <q-btn flat round icon="eva-camera-outline" size="18px" dense to="/camera" class="large-screen-only q-mr-sm"/>
+
+        <q-separator vertical spaced class="large-screen-only" />
+
         <q-toolbar-title class="text-grand-hotel text-bold">
           Community
         </q-toolbar-title>
@@ -38,9 +41,14 @@ export default {
 </script>
 
 <style lang="sass">
+.q-toolbar
+  @media (min-width: $breakpoint-sm-min)
+    height: 77px
+
 .q-toolbar__title
-  text-align: center
   font-size: 32px
+  @media (max-width: $breakpoint-xs-max)
+    text-align: center
 
 .q-footer
   .q-tab__icon

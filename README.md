@@ -113,7 +113,9 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
 - `blob` Binary log object. We use this to create image from a base64 string/URL. See `CameraPage: line 90`. Check *Converting Data URI to Blob* in Reference section.
-- We use **Arrow functions** so that we can still use our *Vue* instance with the **"this"** keyword. See `CameraPage: line 107, 121`
+- We use **Arrow functions** so that we can still use our *Vue* instance with the **"this"** keyword. See `CameraPage: line 107, 121`.
+- `getVideoTracks()` returns all of the tracks used by this "video" element. See `CameraPage: line 125`.
+- `beforeDestroy()` hook is triggered just before we leave a page. Hence this is used to *disable" camera when user leaves the camera page. See `CameraPage: line 159`.
 
 ## Reference
 

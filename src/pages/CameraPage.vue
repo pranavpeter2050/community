@@ -96,9 +96,10 @@ export default defineComponent({
       this.imageCaptured = true
       // toDataURL() is used to convert to image to base64 string
       this.post.photo = this.dataURItoBlob(canvas.toDataURL())
+      this.disableCamera()
     },
     captureImageFallback(file) {
-      // console.log('file: ', file)
+      // console.log('file: ', file) // not working as seen in video
       // console.log('file: ', file.target.files[0])
       this.post.photo = file.target.files[0]
       let canvas = this.$refs.canvas
@@ -119,6 +120,12 @@ export default defineComponent({
         img.src = event.target.result
       }
       reader.readAsDataURL(file.target.files[0])
+    },
+    disableCamera() {
+      // getVideoTracks() returns all of the tracks used by this "video" element
+      this.$refs.video.srcObject.getVideoTracks().forEach(track => {
+        track.stop()
+      })
     },
     dataURItoBlob(dataURI) {
       // convert base64 to raw binary data held in a string
@@ -148,6 +155,12 @@ export default defineComponent({
   // used "mounted()" hook to initialize the camera everytime a user hits CameraPage.
   mounted() {
     this.initCamera()
+  },
+  // beforeDestroy() { // deprecated, use below hook instead
+  beforeUnmount() {
+    if (this.hasCameraAccess) {
+      this.disableCamera()
+    }
   }
 })
 </script>

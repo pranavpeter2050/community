@@ -36,13 +36,14 @@
     </div>
     <div class="row justify-center q-ma-md">
       <q-input
+        :loading="locationLoading"
         v-model="post.location"
         class="col col-sm-8"
         label="Location"
         dense
       >
         <template v-slot:append>
-          <q-btn round dense flat icon="eva-navigation-2-outline" @click="getLocation"/>
+          <q-btn v-if="!locationLoading" round dense flat icon="eva-navigation-2-outline" @click="getLocation"/>
         </template>
       </q-input>
     </div>
@@ -71,7 +72,8 @@ export default defineComponent({
       },
       imageCaptured: false,
       imageUpload: [], // <q-file> must have model-value in {{ File | FileList | Array | null | undefined }}  - required!
-      hasCameraAccess: true
+      hasCameraAccess: true,
+      locationLoading: false
     }
   },
   methods: {
@@ -152,6 +154,7 @@ export default defineComponent({
 
     },
     getLocation() {
+      this.locationLoading = true
       navigator.geolocation.getCurrentPosition(position => {
         // console.log("position: ", position)
         this.getCityAndCountry(position)
@@ -177,12 +180,14 @@ export default defineComponent({
       if (result.data.country) {
         this.post.location += `, ${ result.data.country }`
       }
+      this.locationLoading = false
     },
     locationError() {
       $q.dialog({
         title: 'Error',
         message: 'Could not fetch your location.'
       })
+      this.locationLoading = false
     }
   },
   // used "mounted()" hook to initialize the camera everytime a user hits CameraPage.

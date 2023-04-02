@@ -119,6 +119,8 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - We can get the user's location (Latitude & Longitude) using the `geolocation API`. See `CameraPage: line 155`.
 - We pass the latitude &longitude we got from above into a `geocode API` to get user's city/country etc. See `CameraPage: line 155`. Check *Geocode.xyz* in Reference section.
 - Quasar has a in-built plugin to help show *Dialogs* to the user. Read more [here](https://quasar.dev/quasar-plugins/dialog)
+- Quasar has a in-built plugin to help show *Loading state (i.e a component is loading)* to the user. Read more [here](https://quasar.dev/quasar-plugins/loading)
+- To add *loading state* for input field, check [here](https://quasar.dev/vue-components/input#loading-state)
 
 ## Reference
 

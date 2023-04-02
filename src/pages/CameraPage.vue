@@ -156,7 +156,8 @@ export default defineComponent({
         // console.log("position: ", position)
         this.getCityAndCountry(position)
       }, error => {
-        console.log("error: ", error)
+        // console.log("error: ", error)
+        this.locationError()
       }, { timeout: 7000 })
     },
     getCityAndCountry(position) {
@@ -167,7 +168,8 @@ export default defineComponent({
         // console.log("result: ", result)
         this.locationSuccess(result)
       }).catch(error => {
-        console.log("error: ", error)
+        // console.log("error: ", error)
+        this.locationError()
       })
     },
     locationSuccess(result) {
@@ -175,6 +177,12 @@ export default defineComponent({
       if (result.data.country) {
         this.post.location += `, ${ result.data.country }`
       }
+    },
+    locationError() {
+      $q.dialog({
+        title: 'Error',
+        message: 'Could not fetch your location.'
+      })
     }
   },
   // used "mounted()" hook to initialize the camera everytime a user hits CameraPage.

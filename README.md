@@ -118,6 +118,7 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - `beforeDestroy()` hook is triggered just before we leave a page. Hence this is used to *disable" camera when user leaves the camera page. See `CameraPage: line 159`.
 - We can get the user's location (Latitude & Longitude) using the `geolocation API`. See `CameraPage: line 155`.
 - We pass the latitude &longitude we got from above into a `geocode API` to get user's city/country etc. See `CameraPage: line 155`. Check *Geocode.xyz* in Reference section.
+- Quasar has a in-built plugin to help show *Dialogs* to the user. Read more [here](https://quasar.dev/quasar-plugins/dialog)
 
 ## Reference
 

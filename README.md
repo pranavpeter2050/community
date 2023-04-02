@@ -102,6 +102,12 @@ Check the Mozilla docs for **Browser Compactibility** [here](https://developer.m
 npm install --save md-gum-polyfill
 ```
 See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme) to see usage of `md-gum-polyfill`.
+
+## Interesting
+
+- `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
+- `blob` Binary log object. We use this to create image from a base64 string/URL. See `CameraPage: line 90`. Check *Converting Data URI to Blob* in Reference section.
+
 ## Reference
 
 - [Create an Instagram Clone with Vue JS, Quasar & Firebase - in 4 HOURS! (1/6)](https://www.youtube.com/watch?v=9tyFBchdb00&list=PLAiDzIdBfy8h6HgfQg3namagsCUT0Y2Bs)
@@ -119,3 +125,4 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - [What Does `playsinline` Mean in Web Video?](https://css-tricks.com/what-does-playsinline-mean-in-web-video/)
 - [MediaDevices.getUserMedia()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)
 - [md-gum-polyfill - npm package](https://www.npmjs.com/package/md-gum-polyfill)
+- [Converting Data URI to Blob](https://stackoverflow.com/questions/12168909/blob-from-dataurl)

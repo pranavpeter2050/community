@@ -43,7 +43,10 @@
         dense
       >
         <template v-slot:append>
-          <q-btn v-if="!locationLoading" round dense flat icon="eva-navigation-2-outline" @click="getLocation"/>
+          <q-btn v-if="!locationLoading && locationSupported"
+            round dense flat
+            icon="eva-navigation-2-outline"
+            @click="getLocation"/>
         </template>
       </q-input>
     </div>
@@ -74,6 +77,15 @@ export default defineComponent({
       imageUpload: [], // <q-file> must have model-value in {{ File | FileList | Array | null | undefined }}  - required!
       hasCameraAccess: true,
       locationLoading: false
+    }
+  },
+  computed: {
+    locationSupported() {
+      if ('geolocation' in navigator) {
+        return true
+      } else {
+        return false
+      }
     }
   },
   methods: {

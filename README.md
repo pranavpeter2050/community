@@ -121,6 +121,8 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - Quasar has a in-built plugin to help show *Dialogs* to the user. Read more [here](https://quasar.dev/quasar-plugins/dialog)
 - Quasar has a in-built plugin to help show *Loading state (i.e a component is loading)* to the user. Read more [here](https://quasar.dev/quasar-plugins/loading)
 - To add *loading state* for input field, check [here](https://quasar.dev/vue-components/input#loading-state)
+- We can check if the user's browser supports `geolocation` with help of the `navigator` object. See `CameraPage: line 84`.
+- `computed` object to written below `data()` and above `methods` object. What is the use-case of *computed*?
 
 ## Reference
 

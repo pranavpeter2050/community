@@ -94,6 +94,14 @@ These classes are to be used when the direct children have col-* or offset-* cla
 
 Quasar has in built Utility to generate Id. See [here](https://quasar.dev/quasar-utils/other-utils#uid-generate-uid).
 
+## Accessing Camera maybe not supported in every browser
+Check the Mozilla docs for **Browser Compactibility** [here](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia#browser_compatibility). Some older versions of different browsers use different function name for `getUserMedia`. To help solve this issue, we use a npm package `md-gum-polyfill`.
+
+```bash
+// md-gum-polyfill => mediaDevices-getUserMedia-polyfill
+npm install --save md-gum-polyfill
+```
+See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme) to see usage of `md-gum-polyfill`.
 ## Reference
 
 - [Create an Instagram Clone with Vue JS, Quasar & Firebase - in 4 HOURS! (1/6)](https://www.youtube.com/watch?v=9tyFBchdb00&list=PLAiDzIdBfy8h6HgfQg3namagsCUT0Y2Bs)
@@ -109,3 +117,5 @@ Quasar has in built Utility to generate Id. See [here](https://quasar.dev/quasar
 - [Quasar - Color Palette](https://quasar.dev/style/color-palette)
 - [Quasar Utils/ Other Utils](https://quasar.dev/quasar-utils/other-utils)
 - [What Does `playsinline` Mean in Web Video?](https://css-tricks.com/what-does-playsinline-mean-in-web-video/)
+- [MediaDevices.getUserMedia()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)
+- [md-gum-polyfill - npm package](https://www.npmjs.com/package/md-gum-polyfill)

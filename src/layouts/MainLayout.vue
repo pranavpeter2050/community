@@ -2,14 +2,14 @@
   <q-layout view="lHh Lpr lFf">
     <q-header class="bg-white text-grey-10" bordered>
       <q-toolbar class="constrain">
-        <q-btn flat round icon="eva-camera-outline" size="18px" dense to="/camera" class="large-screen-only q-mr-sm"/>
+        <q-btn flat round icon="eva-camera-outline" size="18px" dense to="/camera" class="header-nav-icon large-screen-only q-mr-sm"/>
 
         <q-separator vertical spaced class="large-screen-only" />
 
         <q-toolbar-title class="text-grand-hotel text-bold">
           Community
         </q-toolbar-title>
-        <q-btn flat round icon="eva-home-outline" size="18px" dense to="/" class="large-screen-only"/>
+        <q-btn flat round icon="eva-home-outline" size="18px" dense to="/" class="header-nav-icon large-screen-only"/>
 
       </q-toolbar>
     </q-header>
@@ -41,6 +41,10 @@ export default {
 </script>
 
 <style lang="sass">
+.header-nav-icon
+  .q-icon
+    margin-top: 6px
+
 .q-toolbar
   @media (min-width: $breakpoint-sm-min)
     height: 77px

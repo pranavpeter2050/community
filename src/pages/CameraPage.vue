@@ -1,5 +1,5 @@
 <template>
-  <q-page class="constrain q-pa-md">
+  <q-page class="constrain-more q-pa-md">
     <div class="camera-frame q-pa-md">
       <img src="https://cdn.quasar.dev/img/mountains.jpg" class="full-width">
     </div>
@@ -11,7 +11,7 @@
     <div class="row justify-center q-ma-md">
       <q-input
         v-model="caption"
-        class="col"
+        class="col col-sm-8"
         label="Caption"
         dense
       />
@@ -19,7 +19,7 @@
     <div class="row justify-center q-ma-md">
       <q-input
         v-model="location"
-        class="col"
+        class="col col-sm-8"
         label="Location"
         dense
       >

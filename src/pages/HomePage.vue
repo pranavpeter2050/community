@@ -34,7 +34,7 @@
       </div>
 
       <div class="col-4">
-        <q-item>
+        <q-item class="fixed">
             <q-item-section avatar>
               <q-avatar size="48px">
                 <img src="https://cdn.quasar.dev/img/boy-avatar.png">

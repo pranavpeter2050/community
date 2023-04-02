@@ -82,7 +82,7 @@ Quasar has in-built utility to help with the same. Click [here](https://quasar.d
 
 These classes are to be used when the direct children have col-* or offset-* classes that specify a width.
 
-
+## [CSS Positioning Classes](https://quasar.dev/style/positioning#introduction)
 
 ## Reference
 

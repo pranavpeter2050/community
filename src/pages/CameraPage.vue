@@ -17,7 +17,13 @@
     </div>
 
     <div class="text-center q-pa-md">
-      <q-btn round color="grey-10" icon="eva-camera" size="lg" @click="captureImage" />
+      <q-btn v-if="hasCameraAccess" round color="grey-10" icon="eva-camera" size="lg" @click="captureImage" />
+
+      <q-file v-else outlined v-model="imageUpload" label="Choose an image" accept="image/*">
+        <template v-slot:prepend>
+          <q-icon name="eva-attach-outline" />
+        </template>
+      </q-file>
     </div>
 
     <div class="row justify-center q-ma-md">
@@ -63,7 +69,9 @@ export default defineComponent({
         photo: null,
         date: Date.now()
       },
-      imageCaptured: false
+      imageCaptured: false,
+      imageUpload: [], // <q-file> must have model-value in {{ File | FileList | Array | null | undefined }}  - required!
+      hasCameraAccess: true
     }
   },
   methods: {
@@ -73,6 +81,8 @@ export default defineComponent({
         video: true
       }).then(stream => {
         this.$refs.video.srcObject = stream
+      }).catch(error => {
+        this.hasCameraAccess = false
       })
     },
     captureImage() {

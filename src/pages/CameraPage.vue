@@ -42,7 +42,7 @@
         dense
       >
         <template v-slot:append>
-          <q-btn round dense flat icon="eva-navigation-2-outline" />
+          <q-btn round dense flat icon="eva-navigation-2-outline" @click="getLocation"/>
         </template>
       </q-input>
     </div>
@@ -150,6 +150,13 @@ export default defineComponent({
       var blob = new Blob([ab], {type: mimeString});
       return blob;
 
+    },
+    getLocation() {
+      navigator.geolocation.getCurrentPosition(position => {
+        console.log("position: ", position)
+      }, error => {
+        console.log("error: ", error)
+      }, { timeout: 7000 })
     }
   },
   // used "mounted()" hook to initialize the camera everytime a user hits CameraPage.

@@ -153,10 +153,28 @@ export default defineComponent({
     },
     getLocation() {
       navigator.geolocation.getCurrentPosition(position => {
-        console.log("position: ", position)
+        // console.log("position: ", position)
+        this.getCityAndCountry(position)
       }, error => {
         console.log("error: ", error)
       }, { timeout: 7000 })
+    },
+    getCityAndCountry(position) {
+      let apiKey = "24152333254667263678x92974"
+      let apiUrl = `https://geocode.xyz/${ position.coords.latitude },${ position.coords.longitude }?json=1&auth=${ apiKey }`
+
+      this.$axios.get(apiUrl).then(result => {
+        // console.log("result: ", result)
+        this.locationSuccess(result)
+      }).catch(error => {
+        console.log("error: ", error)
+      })
+    },
+    locationSuccess(result) {
+      this.post.location = result.data.city
+      if (result.data.country) {
+        this.post.location += `, ${ result.data.country }`
+      }
     }
   },
   // used "mounted()" hook to initialize the camera everytime a user hits CameraPage.

@@ -116,7 +116,8 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - We use **Arrow functions** so that we can still use our *Vue* instance with the **"this"** keyword. See `CameraPage: line 107, 121`.
 - `getVideoTracks()` returns all of the tracks used by this "video" element. See `CameraPage: line 125`.
 - `beforeDestroy()` hook is triggered just before we leave a page. Hence this is used to *disable" camera when user leaves the camera page. See `CameraPage: line 159`.
-- We can get the user's location using the `geolocation API`. See `CameraPage: line 155`.
+- We can get the user's location (Latitude & Longitude) using the `geolocation API`. See `CameraPage: line 155`.
+- We pass the latitude &longitude we got from above into a `geocode API` to get user's city/country etc. See `CameraPage: line 155`. Check *Geocode.xyz* in Reference section.
 
 ## Reference
 
@@ -137,3 +138,4 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - [md-gum-polyfill - npm package](https://www.npmjs.com/package/md-gum-polyfill)
 - [Converting Data URI to Blob](https://stackoverflow.com/questions/12168909/blob-from-dataurl)
 - [Upload Image to Canvas](https://stackoverflow.com/questions/10906734/how-to-upload-image-into-html5-canvas)
+- [Geocode.xyz](https://geocode.xyz/api)

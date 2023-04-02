@@ -1,7 +1,12 @@
 <template>
   <q-page class="constrain-more q-pa-md">
     <div class="camera-frame q-pa-md">
-      <img src="https://cdn.quasar.dev/img/mountains.jpg" class="full-width">
+      <video
+        autoplay
+        class="full-width"
+        playsinline
+        ref="video"
+      />
     </div>
 
     <div class="text-center q-pa-md">
@@ -50,6 +55,20 @@ export default defineComponent({
         date: Date.now()
       }
     }
+  },
+  methods: {
+    initCamera(){
+      // "getUserMedia()" method allows us to access the user's camera. This method takes an "object" an parameter.
+      navigator.mediaDevices.getUserMedia({
+        video: true
+      }).then(stream => {
+        this.$refs.video.srcObject = stream
+      })
+    }
+  },
+  // used "mounted()" hook to initialize the camera everytime a user hits CameraPage.
+  mounted() {
+    this.initCamera()
   }
 })
 </script>

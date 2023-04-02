@@ -108,3 +108,4 @@ Quasar has in built Utility to generate Id. See [here](https://quasar.dev/quasar
 - [Quasar - Other CSS Helper Classes](https://quasar.dev/style/other-helper-classes)
 - [Quasar - Color Palette](https://quasar.dev/style/color-palette)
 - [Quasar Utils/ Other Utils](https://quasar.dev/quasar-utils/other-utils)
+- [What Does `playsinline` Mean in Web Video?](https://css-tricks.com/what-does-playsinline-mean-in-web-video/)

@@ -26,7 +26,7 @@
 
       <q-card-section>
         <div>{{ post.caption }}</div>
-        <div class="text-caption text-grey">{{ post.date }}</div>
+        <div class="text-caption text-grey">{{ niceDate(post.date) }}</div>
       </q-card-section>
     </q-card>
   </q-page>
@@ -34,6 +34,7 @@
 
 <script>
 import { defineComponent } from 'vue'
+import { date } from 'quasar'
 
 export default defineComponent({
   name: 'HomePage',
@@ -69,6 +70,11 @@ export default defineComponent({
           imageUrl: 'https://random.imagecdn.app/300/200'
         },
       ],
+    }
+  },
+  methods: {
+    niceDate(timeStamp) {
+      return date.formatDate(timeStamp, 'MMMM D, h:mmA')
     }
   }
 })

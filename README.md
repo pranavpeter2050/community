@@ -74,6 +74,9 @@ export default {
 }
 ```
 
+## Formating how the "Date" is displayed in Quasar
+
+Quasar has in-built utility to help with the same. Click [here](https://quasar.dev/quasar-utils/date-utils#introduction) for more info.
 ## Reference
 
 - [Create an Instagram Clone with Vue JS, Quasar & Firebase - in 4 HOURS! (1/6)](https://www.youtube.com/watch?v=9tyFBchdb00&list=PLAiDzIdBfy8h6HgfQg3namagsCUT0Y2Bs)

@@ -81,3 +81,6 @@ export default {
 - [Using Eva icons](https://quasar.dev/vue-components/icon#webfont-usage)
 - [Google Fonts](https://fonts.google.com/)
 - [Grand Hotel - Google Font](https://fonts.google.com/share?selection.family=Grand+Hotel)
+- [Lorem Picsum](https://picsum.photos/)
+- [Random Image API](https://random.responsiveimages.io/)
+- [Pexels API - Documentation](https://www.pexels.com/api/documentation/#photos-overview)

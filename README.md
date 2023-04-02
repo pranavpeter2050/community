@@ -103,10 +103,17 @@ npm install --save md-gum-polyfill
 ```
 See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme) to see usage of `md-gum-polyfill`.
 
+## Fallback for when user "denies" camera access etc.
+
+- In this case, we have implemented a file-picker `<q-file>` and saved the selected file inside `imageUpload` data variable.
+- Now we need to show a thumbnail inside the camera-frame for the selected image by creating a *blob*.
+- To show a thumbanail of the image file selected by user, check the *Upload Image to Canvas* in Reference section.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
 - `blob` Binary log object. We use this to create image from a base64 string/URL. See `CameraPage: line 90`. Check *Converting Data URI to Blob* in Reference section.
+- We use **Arrow functions** so that we can still use our *Vue* instance with the **"this"** keyword. See `CameraPage: line 107, 121`
 
 ## Reference
 
@@ -126,3 +133,4 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - [MediaDevices.getUserMedia()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)
 - [md-gum-polyfill - npm package](https://www.npmjs.com/package/md-gum-polyfill)
 - [Converting Data URI to Blob](https://stackoverflow.com/questions/12168909/blob-from-dataurl)
+- [Upload Image to Canvas](https://stackoverflow.com/questions/10906734/how-to-upload-image-into-html5-canvas)

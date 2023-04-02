@@ -19,7 +19,7 @@
     <div class="text-center q-pa-md">
       <q-btn v-if="hasCameraAccess" round color="grey-10" icon="eva-camera" size="lg" @click="captureImage" />
 
-      <q-file v-else outlined v-model="imageUpload" label="Choose an image" accept="image/*">
+      <q-file v-else outlined v-model="imageUpload" label="Choose an image" accept="image/*" @input="captureImageFallback">
         <template v-slot:prepend>
           <q-icon name="eva-attach-outline" />
         </template>
@@ -96,6 +96,29 @@ export default defineComponent({
       this.imageCaptured = true
       // toDataURL() is used to convert to image to base64 string
       this.post.photo = this.dataURItoBlob(canvas.toDataURL())
+    },
+    captureImageFallback(file) {
+      // console.log('file: ', file)
+      // console.log('file: ', file.target.files[0])
+      this.post.photo = file.target.files[0]
+      let canvas = this.$refs.canvas
+      let context = canvas.getContext('2d')
+
+      var reader = new FileReader();
+      // we use "Arrow functions" below so that we can still use our Vue instance with the "this" keyword
+      reader.onload = event => {
+        var img = new Image()
+        img.onload = () => {
+          canvas.width = img.width
+          canvas.height = img.height
+          // image is draw into the canvas below
+          context.drawImage(img,0,0)
+          // un-hide the canvas in DOM
+          this.imageCaptured = true
+        }
+        img.src = event.target.result
+      }
+      reader.readAsDataURL(file.target.files[0])
     },
     dataURItoBlob(dataURI) {
       // convert base64 to raw binary data held in a string

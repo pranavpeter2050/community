@@ -84,6 +84,8 @@ These classes are to be used when the direct children have col-* or offset-* cla
 
 ## [CSS Positioning Classes](https://quasar.dev/style/positioning#introduction)
 
+## [Layout/Grid/Row/Responsive Classes](https://quasar.dev/layout/grid/row#responsive-classes)
+
 ## Reference
 
 - [Create an Instagram Clone with Vue JS, Quasar & Firebase - in 4 HOURS! (1/6)](https://www.youtube.com/watch?v=9tyFBchdb00&list=PLAiDzIdBfy8h6HgfQg3namagsCUT0Y2Bs)

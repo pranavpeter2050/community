@@ -2,9 +2,11 @@
   <q-layout view="lHh Lpr lFf">
     <q-header class="bg-white text-grey-10" bordered>
       <q-toolbar>
+        <q-btn flat round icon="eva-camera-outline" size="18px" dense to="/camera" class="large-screen-only"/>
         <q-toolbar-title class="text-grand-hotel text-bold">
           Community
         </q-toolbar-title>
+        <q-btn flat round icon="eva-home-outline" size="18px" dense to="/" class="large-screen-only"/>
 
       </q-toolbar>
     </q-header>

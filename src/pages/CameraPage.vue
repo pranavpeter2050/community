@@ -42,6 +42,7 @@
 <script>
 import { defineComponent } from 'vue'
 import { uid } from 'quasar'
+require('md-gum-polyfill')
 
 export default defineComponent({
   name: 'CameraPage',

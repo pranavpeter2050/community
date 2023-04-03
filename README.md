@@ -1,4 +1,4 @@
-# Community (community)
+# Community
 
 An Instagram clone using Quasar framework.
 
@@ -109,6 +109,15 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - Now we need to show a thumbnail inside the camera-frame for the selected image by creating a *blob*.
 - To show a thumbanail of the image file selected by user, check the *Upload Image to Canvas* in Reference section.
 
+## Exchange data with Firebase
+`nodejs` and `express` backend is built to upload to image to Firebase Storage.
+#### Steps:
+1. Create new folder, say `backend`. Open a terminal inside this folder and run `npm init`. (*npm init* will initialize the *backend folder* as a **npm package** and create a *package.json* file to manage dependencies). Leave all prompts as default by pressing enter-key.
+  - We can add/create/define custom *scripts* to help run hard-to-remember commands.
+2. Create `index.js` file inside `backend` folder. This will be used to store all of our backend code.
+3. We are using `express` as backend or to built our backend. Express is very handy for creating APIs. Install Express by running `npm install express --save`.
+4. Run the app with the following command: `node app.js` (Replace the *app.js* name with the name of the respective file, in our case *index.js*).
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
@@ -123,6 +132,7 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - To add *loading state* for input field, check [here](https://quasar.dev/vue-components/input#loading-state)
 - We can check if the user's browser supports `geolocation` with help of the `navigator` object. See `CameraPage: line 84`.
 - `computed` object to written below `data()` and above `methods` object. What is the use-case of *computed*?
+
 
 ## Reference
 
@@ -144,3 +154,6 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - [Converting Data URI to Blob](https://stackoverflow.com/questions/12168909/blob-from-dataurl)
 - [Upload Image to Canvas](https://stackoverflow.com/questions/10906734/how-to-upload-image-into-html5-canvas)
 - [Geocode.xyz](https://geocode.xyz/api)
+- [Geocode/cred](pranavgotb@gmail.com/password1234)
+- [Setting up Firebase: Firestore, Storage](https://www.youtube.com/watch?v=bOMVP7EdIGs)
+- [Express JS](https://expressjs.com/)

@@ -109,7 +109,7 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - Now we need to show a thumbnail inside the camera-frame for the selected image by creating a *blob*.
 - To show a thumbanail of the image file selected by user, check the *Upload Image to Canvas* in Reference section.
 
-## Exchange data with Firebase
+## Setting up Backend using Node.js and Express.js
 `nodejs` and `express` backend is built to upload to image to Firebase Storage.
 #### Steps:
 1. Create new folder, say `backend`. Open a terminal inside this folder and run `npm init`. (*npm init* will initialize the *backend folder* as a **npm package** and create a *package.json* file to manage dependencies). Leave all prompts as default by pressing enter-key.
@@ -119,6 +119,10 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 4. Run the app with the following command: `node app.js` (Replace the *app.js* name with the name of the respective file, in our case *index.js*).
 5. We will have to stop the express-server and start it again every time we make changes in the `index.js` file. To solve this we use **nodemon** npm package. To install nodemon, run `npm install -g nodemon`. Read related docs [here](https://github.com/remy/nodemon#nodemon).
 6. To start the express-server using nodemon, run `nodemon index.js`. To avoid writing the command, we define a script in `package.json` file, called `start`. See `package.json: line 7`. We can now start the express-server by running `npm start` instead of `nodemon index.js`.
+
+## Deploying the Backend service / Hosting our backend for free
+
+There are various places where we can host our backend for free such as *IBM Cloud, Hope node, Netlify* etc. We are using Heroku for this project because with Heoku we can deploy this server with just a terminal command without having to setup any git repository. This will help us keep the project as simple as possible.
 
 ## Interesting
 

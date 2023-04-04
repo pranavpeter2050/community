@@ -4,10 +4,19 @@ const express = require('express')
 /* config - express */
 const app = express()
 
-/* api endpoint */
-app.get('/', (request, response) => {
-  response.send('You\'re fine!')
-  console.log("server is working")
+/* api endpoint - posts */
+app.get('/posts', (request, response) => {
+  let posts = [
+    {
+      caption: "Golden Gate Bridge",
+      location: "San Francisco"
+    },
+    {
+      caption: "Big Ben Tower",
+      location: "London"
+    }
+  ]
+  response.send(posts)
 })
 
 /* listen (port) */

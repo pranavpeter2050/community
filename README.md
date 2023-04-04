@@ -117,6 +117,8 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 2. Create `index.js` file inside `backend` folder. This will be used to store all of our backend code.
 3. We are using `express` as backend or to built our backend. Express is very handy for creating APIs. Install Express by running `npm install express --save`.
 4. Run the app with the following command: `node app.js` (Replace the *app.js* name with the name of the respective file, in our case *index.js*).
+5. We will have to stop the express-server and start it again every time we make changes in the `index.js` file. To solve this we use **nodemon** npm package. To install nodemon, run `npm install -g nodemon`. Read related docs [here](https://github.com/remy/nodemon#nodemon).
+6. To start the express-server using nodemon, run `nodemon index.js`. To avoid writing the command, we define a script in `package.json` file, called `start`. See `package.json: line 7`. We can now start the express-server by running `npm start` instead of `nodemon index.js`.
 
 ## Interesting
 
@@ -157,3 +159,4 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 - [Geocode/cred](pranavgotb@gmail.com/password1234)
 - [Setting up Firebase: Firestore, Storage](https://www.youtube.com/watch?v=bOMVP7EdIGs)
 - [Express JS](https://expressjs.com/)
+- [Nodemon](https://nodemon.io/)

@@ -199,7 +199,9 @@ Installing **Busboy**. For explaination on working of Busboy, see this [video](h
 ```bash
 // we add "--save" to save the npm package (busboy in this case) as a dependency
 npm install busboy --save
-``
+```
+
+Adding data to collection in Firebase DB: See [here](https://firebase.google.com/docs/firestore/manage-data/add-data?hl=en&authuser=1#set_a_document).
 
 ## Interesting
 

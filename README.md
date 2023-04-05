@@ -166,6 +166,27 @@ This basically means that our app (frontend) doesn't have permission to access t
 
 We can handle this by setting the `Access-Control-Allow-Origin` header to allow requests from any origin by using the "**response**" object that we have in our endpoint. See `backend\index.js: line 20`.
 
+#### [Sorting data](https://firebase.google.com/docs/firestore/query-data/order-limit-data?hl=en&authuser=1) when fetching from Firebase DB
+
+By default, a query retrieves all documents that satisfy the query in ascending order by document ID. You can specify the sort order for your data using orderBy(), and you can limit the number of documents retrieved using limit().
+
+```bash
+// query for the first 3 cities alphabetically with:
+const firstThreeRes = await citiesRef.orderBy('name').limit(3).get();index.js
+
+// sort in descending order to get the last 3 cities:
+const lastThreeRes = await citiesRef.orderBy('name', 'desc').limit(3).get();index.js
+
+// order by multiple fields. For example, if you wanted to order by state, and within each state order by population in descending order:
+const byStateByPopRes = await citiesRef.orderBy('state').orderBy('population', 'desc').get();index.js
+
+// combine where() filters with orderBy() and limit(). In the following example, the queries define a population threshold, sort by population in ascending order, and return only the first few results that exceed the threshold:
+const biggestRes = await citiesRef.where('population', '>', 2500000)
+  .orderBy('population').limit(2).get();index.js
+```
+
+However, if you have a filter with a range comparison (<, <=, >, >=), your first ordering must be on the same field, see the list of orderBy() limitations [here](https://firebase.google.com/docs/firestore/query-data/order-limit-data?hl=en&authuser=1#limitations).
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

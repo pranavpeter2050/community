@@ -31,5 +31,13 @@ app.get('/posts', (request, response) => {
 
 })
 
+/* api endpoint - createPost */
+app.get('/createPost', (request, response) => {
+  response.set('Access-Control-Allow-Origin', '*')
+
+  response.send("createPost endpoint")
+
+})
+
 /* listen (port) */
 app.listen(3000)

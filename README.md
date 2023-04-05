@@ -187,6 +187,14 @@ const biggestRes = await citiesRef.where('population', '>', 2500000)
 
 However, if you have a filter with a range comparison (<, <=, >, >=), your first ordering must be on the same field, see the list of orderBy() limitations [here](https://firebase.google.com/docs/firestore/query-data/order-limit-data?hl=en&authuser=1#limitations).
 
+# Finishing up - [Last video](https://www.youtube.com/watch?v=Tnz2K_tX_qo)
+
+1. Making "create post" endpoint which will be used by our CameraPage to create a new post
+2. Setting up an **env variable** to switch between our production API and local API.
+3. Setting up "create post" endpoint with **busyboy** library
+4. Add some form validations; like disabling the camera-button once an image has been captured. Add some error handling, loadingState when creating/submittung new post.
+5. Deploy our app to Firebase hosting. Backend was supposed to be deployed in Heroku.. but since it is not a paid service now. We try and see if we can use **ngrok** to expose our *local backend* to the internet.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

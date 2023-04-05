@@ -250,3 +250,5 @@ Adding data to collection in Firebase DB: See [here](https://firebase.google.com
 - [Skeleton Quasar/Vue component](https://quasar.dev/vue-components/skeleton#qskeleton-api)
 - [Handling process.env](https://quasar.dev/quasar-cli-vite/handling-process-env#adding-to-process-env)
 - [Busboy github](https://github.com/mscdex/busboy)
+- [Quasar Notify Plugin](https://quasar.dev/quasar-plugins/notify)
+- [Quasar Loading Plugin](https://quasar.dev/quasar-plugins/loading)

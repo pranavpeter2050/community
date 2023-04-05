@@ -17,7 +17,7 @@
     </div>
 
     <div class="text-center q-pa-md">
-      <q-btn v-if="hasCameraAccess" round color="grey-10" icon="eva-camera" size="lg" @click="captureImage" />
+      <q-btn v-if="hasCameraAccess" round color="grey-10" icon="eva-camera" size="lg" @click="captureImage" :disable="imageCaptured" />
 
       <q-file v-else outlined v-model="imageUpload" label="Choose an image" accept="image/*" @input="captureImageFallback">
         <template v-slot:prepend>
@@ -30,7 +30,7 @@
       <q-input
         v-model="post.caption"
         class="col col-sm-8"
-        label="Caption"
+        label="Caption*"
         dense
       />
     </div>
@@ -51,7 +51,7 @@
       </q-input>
     </div>
     <div class="row justify-center q-mt-lg">
-      <q-btn unelevated rounded color="primary" label="Post Image" @click="addPost()"/>
+      <q-btn unelevated rounded color="primary" label="Post Image" @click="addPost()" :disable="!post.caption || !post.photo" />
     </div>
   </q-page>
 </template>
@@ -195,13 +195,14 @@ export default defineComponent({
       this.locationLoading = false
     },
     locationError() {
-      $q.dialog({
+      this.$q.dialog({
         title: 'Error',
         message: 'Could not fetch your location.'
       })
       this.locationLoading = false
     },
     addPost() {
+      this.$q.loading.show()
       let formData = new FormData()
       formData.append('id', this.post.id)
       formData.append('caption', this.post.caption)
@@ -211,8 +212,21 @@ export default defineComponent({
 
       this.$axios.post(`${ process.env.API }/createPost`, formData).then(response => {
         console.log("response: ", response)
+        this.$router.push('/')
+        this.$q.notify({
+          message: 'Post created!',
+          actions: [
+            { label: 'Dismiss', color: 'white' }
+          ]
+        })
+        this.$q.loading.hide()
       }).catch(error => {
         console.log("error: ", error)
+        this.$q.dialog({
+          title: 'Error',
+          message: 'Sorry, could not create post!'
+        })
+        this.$q.loading.hide()
       })
     }
   },

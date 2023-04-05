@@ -191,9 +191,15 @@ However, if you have a filter with a range comparison (<, <=, >, >=), your first
 
 1. Making "create post" endpoint which will be used by our CameraPage to create a new post
 2. Setting up an **env variable** to switch between our production API and local API. See *Handling process.env* in Reference.
-3. Setting up "create post" endpoint with **busyboy** library
+3. Setting up "create post" endpoint with **busboy** library. See *busboy* in Reference section.
 4. Add some form validations; like disabling the camera-button once an image has been captured. Add some error handling, loadingState when creating/submittung new post.
 5. Deploy our app to Firebase hosting. Backend was supposed to be deployed in Heroku.. but since it is not a paid service now. We try and see if we can use **ngrok** to expose our *local backend* to the internet.
+
+Installing **Busboy**. For explaination on working of Busboy, see this [video](https://youtu.be/Tnz2K_tX_qo?t=1089).
+```bash
+// we add "--save" to save the npm package (busboy in this case) as a dependency
+npm install busboy --save
+``
 
 ## Interesting
 
@@ -209,7 +215,8 @@ However, if you have a filter with a range comparison (<, <=, >, >=), your first
 - To add *loading state* for input field, check [here](https://quasar.dev/vue-components/input#loading-state)
 - We can check if the user's browser supports `geolocation` with help of the `navigator` object. See `CameraPage: line 84`.
 - `computed` object to written below `data()` and above `methods` object. What is the use-case of *computed*?
-- the `getPosts()` method is triggered using the `created()` vue-hook. See `HomePage: line `.
+- the `getPosts()` method is triggered using the `created()` vue-hook. See `HomePage: line 116`.
+- In order to access the *formData, fields, files* etc. on the backend we use an npm package called **busboy**.
 
 
 ## Reference
@@ -240,3 +247,4 @@ However, if you have a filter with a range comparison (<, <=, >, >=), your first
 - [Genereating Service Account Key](https://youtu.be/G6SoMOBDm0A?t=190)
 - [Skeleton Quasar/Vue component](https://quasar.dev/vue-components/skeleton#qskeleton-api)
 - [Handling process.env](https://quasar.dev/quasar-cli-vite/handling-process-env#adding-to-process-env)
+- [Busboy github](https://github.com/mscdex/busboy)

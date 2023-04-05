@@ -12,7 +12,7 @@
 const { configure } = require('quasar/wrappers');
 
 let API_LOCAL = 'http://localhost:3000'
-let API_PROD = 'https://ee6d-122-50-220-19.in.ngrok.io/'
+let API_PROD = 'https://ee6d-122-50-220-19.in.ngrok.io'
 
 module.exports = configure(function (/* ctx */) {
   return {

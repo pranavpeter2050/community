@@ -124,6 +124,38 @@ See [here](https://github.com/mozdevs/mediaDevices-getUserMedia-polyfill#readme)
 
 There are various places where we can host our backend for free such as *IBM Cloud, Hope node, Netlify* etc. We are using Heroku for this project because with Heoku we can deploy this server with just a terminal command without having to setup any git repository. This will help us keep the project as simple as possible.
 
+Note:
+Heroku is now a paid service. For the time being, we are using **ngrok** to expose the *local express-server* to the internet.
+
+## Connecting Backend to Firebase DB
+
+Follow the [Firebase Docs](https://firebase.google.com/docs/firestore/quickstart?hl=en&authuser=1#node.js) on *Set up your development environment* to add the required dependencies etc. to our app.
+
+```bash
+// Run below command to install Firebase Admin SDK when using node.js.
+// Note: The teminal should be opened inside the "backend" folder in our case.
+npm install firebase-admin --save
+```
+
+## Changed the default [Read Data](https://firebase.google.com/docs/firestore/quickstart?hl=en&authuser=1#node.js_4) method (node.js)
+original lines
+```bash
+const snapshot = await db.collection('users').get();
+snapshot.forEach((doc) => {
+  console.log(doc.id, '=>', doc.data());
+});
+```
+
+New lines
+```bash
+db.collection('posts').get().then(snapshot => {
+  snapshot.forEach((doc) => {
+    console.log(doc.id, '=>', doc.data());
+  });
+})
+```
+
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
@@ -164,3 +196,5 @@ There are various places where we can host our backend for free such as *IBM Clo
 - [Setting up Firebase: Firestore, Storage](https://www.youtube.com/watch?v=bOMVP7EdIGs)
 - [Express JS](https://expressjs.com/)
 - [Nodemon](https://nodemon.io/)
+- [Setting up Heroku to host *Backend* - Youtube](https://youtu.be/bOMVP7EdIGs?t=1226)
+- [Genereating Service Account Key](https://youtu.be/G6SoMOBDm0A?t=190)

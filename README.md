@@ -190,7 +190,7 @@ However, if you have a filter with a range comparison (<, <=, >, >=), your first
 # Finishing up - [Last video](https://www.youtube.com/watch?v=Tnz2K_tX_qo)
 
 1. Making "create post" endpoint which will be used by our CameraPage to create a new post
-2. Setting up an **env variable** to switch between our production API and local API.
+2. Setting up an **env variable** to switch between our production API and local API. See *Handling process.env* in Reference.
 3. Setting up "create post" endpoint with **busyboy** library
 4. Add some form validations; like disabling the camera-button once an image has been captured. Add some error handling, loadingState when creating/submittung new post.
 5. Deploy our app to Firebase hosting. Backend was supposed to be deployed in Heroku.. but since it is not a paid service now. We try and see if we can use **ngrok** to expose our *local backend* to the internet.
@@ -239,3 +239,4 @@ However, if you have a filter with a range comparison (<, <=, >, >=), your first
 - [Setting up Heroku to host *Backend* - Youtube](https://youtu.be/bOMVP7EdIGs?t=1226)
 - [Genereating Service Account Key](https://youtu.be/G6SoMOBDm0A?t=190)
 - [Skeleton Quasar/Vue component](https://quasar.dev/vue-components/skeleton#qskeleton-api)
+- [Handling process.env](https://quasar.dev/quasar-cli-vite/handling-process-env#adding-to-process-env)

@@ -11,6 +11,8 @@
 
 const { configure } = require('quasar/wrappers');
 
+let API_LOCAL = 'http://localhost:3000'
+let API_PROD = 'https://ee6d-122-50-220-19.in.ngrok.io/'
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -48,6 +50,9 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
+      env: {
+        API: API_PROD // API_LOCAL \ API_PROD
+      },
       target: {
         browser: [ 'es2019', 'edge88', 'firefox78', 'chrome87', 'safari13.1' ],
         node: 'node16'

@@ -252,3 +252,4 @@ Adding data to collection in Firebase DB: See [here](https://firebase.google.com
 - [Busboy github](https://github.com/mscdex/busboy)
 - [Quasar Notify Plugin](https://quasar.dev/quasar-plugins/notify)
 - [Quasar Loading Plugin](https://quasar.dev/quasar-plugins/loading)
+- [Deploying with Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart?hl=en&authuser=1)

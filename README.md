@@ -154,7 +154,17 @@ db.collection('posts').get().then(snapshot => {
   });
 })
 ```
+## Fetching data from backend to frontend
 
+When trying to get posts from backend API, we see an error in the Browser-console:
+
+```console
+Access to XMLHttpRequest at 'http://localhost:3000/posts' from origin 'http://localhost:9000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+```
+
+This basically means that our app (frontend) doesn't have permission to access the backend API endpoint. In other words, our API endpoint **can't** recieve cross-origin requests (i.e requests from other servers).
+
+We can handle this by setting the `Access-Control-Allow-Origin` header to allow requests from any origin by using the "**response**" object that we have in our endpoint. See `backend\index.js: line 20`.
 
 ## Interesting
 
@@ -170,6 +180,7 @@ db.collection('posts').get().then(snapshot => {
 - To add *loading state* for input field, check [here](https://quasar.dev/vue-components/input#loading-state)
 - We can check if the user's browser supports `geolocation` with help of the `navigator` object. See `CameraPage: line 84`.
 - `computed` object to written below `data()` and above `methods` object. What is the use-case of *computed*?
+- the `getPosts()` method is triggered using the `created()` vue-hook. See `HomePage: line `.
 
 
 ## Reference

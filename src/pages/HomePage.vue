@@ -61,42 +61,23 @@ export default defineComponent({
   name: 'HomePage',
   data() {
     return {
-      posts: [
-        {
-          id: 1,
-          caption: 'The Hills',
-          date: 1680413522958,
-          location: 'Manali, Uttrakhand',
-          imageUrl: 'https://cdn.quasar.dev/img/mountains.jpg'
-        },
-        {
-          id: 2,
-          caption: 'Blinding Lights',
-          date: 1780413522958,
-          location: 'Noida, Uttar Pradesh',
-          imageUrl: 'https://picsum.photos/200'
-        },
-        {
-          id: 3,
-          caption: 'Heartless',
-          date: 1880413522958,
-          location: 'Daft Punk, North Carolina',
-          imageUrl: 'https://picsum.photos/300/200'
-        },
-        {
-          id: 4,
-          caption: 'Feel It Coming',
-          date: 1980413522958,
-          location: 'Berlin, Germany',
-          imageUrl: 'https://random.imagecdn.app/300/200'
-        },
-      ],
+      posts: [],
     }
   },
   methods: {
     niceDate(timeStamp) {
       return date.formatDate(timeStamp, 'MMMM D, h:mmA')
+    },
+    getPosts() {
+      this.$axios.get("http://localhost:3000/posts").then(response => {
+        this.posts = response.data
+      }).catch(error => {
+        console.log("error: ", error)
+      })
     }
+  },
+  created() {
+    this.getPosts()
   }
 })
 </script>

@@ -230,3 +230,4 @@ However, if you have a filter with a range comparison (<, <=, >, >=), your first
 - [Nodemon](https://nodemon.io/)
 - [Setting up Heroku to host *Backend* - Youtube](https://youtu.be/bOMVP7EdIGs?t=1226)
 - [Genereating Service Account Key](https://youtu.be/G6SoMOBDm0A?t=190)
+- [Skeleton Quasar/Vue component](https://quasar.dev/vue-components/skeleton#qskeleton-api)

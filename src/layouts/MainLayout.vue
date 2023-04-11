@@ -25,7 +25,7 @@
             <b>Install Commmunity?</b>
 
             <template v-slot:action>
-              <q-btn flat label="Yes" class="q-px-sm" dense />
+              <q-btn flat label="Yes" class="q-px-sm" dense @click="installApp"/>
               <q-btn flat label="Later" class="q-px-sm" dense />
               <q-btn flat label="Never" class="q-px-sm" dense />
             </template>
@@ -58,7 +58,23 @@ export default {
       showAppInstallBanner: false
     }
   },
+  methods: {
+    installApp() {
+      // Hide the app provided install promotion
+      this.showAppInstallBanner = false;
+      // Show the install prompt
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log("User accepted the install prompt");
+        } else {
+          console.log("User dismessed the install prompt");
+        }
+      });
 
+    }
+  },
   mounted() {
     window.addEventListener('beforeinstallprompt', (e) => {
       // Prevent the mini-infobar from appearing on mobile

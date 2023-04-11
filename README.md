@@ -207,6 +207,14 @@ Adding data to collection in Firebase DB: See [here](https://firebase.google.com
 
 Read more about **manifest** file and it's available properties [here](https://developer.mozilla.org/en-US/docs/Web/Manifest).
 
+## PWA - Icons for All Devices
+
+We are using **Icon Genie** (option given by Quasar) to generate all the different size icons we need from a single source image. Install Icon Genie CLI by running: `npm install -g @quasar/icongenie`. Read more [here](https://quasar.dev/icongenie/introduction).
+
+For best results, use source image with dimensions as specified in docs [here](https://quasar.dev/icongenie/installation#input-files). We can make an draft Vector Icon using [Sketch](https://www.sketch.com/).
+
+To generate icons using Icon Genie, read docs [here](https://quasar.dev/icongenie/command-list). Run the foolwing command to generate icon with respect to the source image *app-icon.png*: `icongenie generate -i app-icon.png --skip-trim --theme-color 212121`. This command is a little difficult to remmember, so we will create an *npm script* for the same. See `package.json: line 9`. After creating
+the script, run `npm run icons` to generate the icons.
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
@@ -257,3 +265,4 @@ Read more about **manifest** file and it's available properties [here](https://d
 - [Quasar Notify Plugin](https://quasar.dev/quasar-plugins/notify)
 - [Quasar Loading Plugin](https://quasar.dev/quasar-plugins/loading)
 - [Deploying with Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart?hl=en&authuser=1)
+- [Sketch - online Vector Graphics editor](https://www.sketch.com/)

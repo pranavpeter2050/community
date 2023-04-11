@@ -15,6 +15,15 @@
     </q-header>
 
     <q-footer class="bg-white small-screen-only" bordered>
+      <q-banner inline-actions class="bg-primary text-white" dense>
+        <b>Install Commmunity?</b>
+
+        <template v-slot:action>
+          <q-btn flat label="Yes" />
+          <q-btn flat label="Later" />
+          <q-btn flat label="Never" />
+        </template>
+      </q-banner>
       <q-tabs class="text-grey-10" active-color="primary" indicator-color="transparent"
       >
         <q-route-tab to="/" icon="eva-home-outline" />

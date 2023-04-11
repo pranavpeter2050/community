@@ -218,6 +218,8 @@ the script, run `npm run icons` to generate the icons.
 
 ## PWA - Home Screen Installation (Prompt)
 
+We are using the in-built Vue [Banner](https://quasar.dev/vue-components/banner) component to show a prompt to user to install our app on their (mobile) device.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
@@ -269,3 +271,4 @@ the script, run `npm run icons` to generate the icons.
 - [Quasar Loading Plugin](https://quasar.dev/quasar-plugins/loading)
 - [Deploying with Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart?hl=en&authuser=1)
 - [Sketch - online Vector Graphics editor](https://www.sketch.com/)
+- [Quasar Banner Component](https://quasar.dev/vue-components/banner#example--inline-actions)

@@ -14,21 +14,26 @@
       </q-toolbar>
     </q-header>
 
-    <q-footer class="bg-white small-screen-only" bordered>
-      <q-banner inline-actions class="bg-primary text-white" dense>
-        <template v-slot:avatar>
-          <q-avatar color="white" text-color="grey-10" icon="eva-camera-outline" font-size="22px" />
-        </template>
+    <q-footer class="bg-white" bordered>
+      <div class="banner-container bg-primary">
+        <div class="constrain">
+          <q-banner inline-actions class="bg-primary text-white" dense>
+            <template v-slot:avatar>
+              <q-avatar color="white" text-color="grey-10" icon="eva-camera-outline" font-size="22px" />
+            </template>
 
-        <b>Install Commmunity?</b>
+            <b>Install Commmunity?</b>
 
-        <template v-slot:action>
-          <q-btn flat label="Yes" class="q-px-sm" dense />
-          <q-btn flat label="Later" class="q-px-sm" dense />
-          <q-btn flat label="Never" class="q-px-sm" dense />
-        </template>
-      </q-banner>
-      <q-tabs class="text-grey-10" active-color="primary" indicator-color="transparent"
+            <template v-slot:action>
+              <q-btn flat label="Yes" class="q-px-sm" dense />
+              <q-btn flat label="Later" class="q-px-sm" dense />
+              <q-btn flat label="Never" class="q-px-sm" dense />
+            </template>
+          </q-banner>
+        </div>
+      </div>
+
+      <q-tabs class="text-grey-10 small-screen-only" active-color="primary" indicator-color="transparent"
       >
         <q-route-tab to="/" icon="eva-home-outline" />
         <q-route-tab to="/camera" icon="eva-camera-outline" />

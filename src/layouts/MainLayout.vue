@@ -16,12 +16,16 @@
 
     <q-footer class="bg-white small-screen-only" bordered>
       <q-banner inline-actions class="bg-primary text-white" dense>
+        <template v-slot:avatar>
+          <q-avatar color="white" text-color="grey-10" icon="eva-camera-outline" font-size="22px" />
+        </template>
+
         <b>Install Commmunity?</b>
 
         <template v-slot:action>
-          <q-btn flat label="Yes" />
-          <q-btn flat label="Later" />
-          <q-btn flat label="Never" />
+          <q-btn flat label="Yes" class="q-px-sm" dense />
+          <q-btn flat label="Later" class="q-px-sm" dense />
+          <q-btn flat label="Never" class="q-px-sm" dense />
         </template>
       </q-banner>
       <q-tabs class="text-grey-10" active-color="primary" indicator-color="transparent"

@@ -203,6 +203,10 @@ npm install busboy --save
 
 Adding data to collection in Firebase DB: See [here](https://firebase.google.com/docs/firestore/manage-data/add-data?hl=en&authuser=1#set_a_document).
 
+## PWA - Setup and Manifest file
+
+Read more about **manifest** file and it's available properties [here](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

@@ -1,7 +1,11 @@
 {
+  "name": "Community - Share your experiences.",
+  "short_name": "Community",
+  "description": "A simple Instagram clone made with Quasar.",
+  "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
-  "theme_color": "#027be3",
+  "theme_color": "#212121",
   "icons": [
     {
       "src": "icons/icon-128x128.png",

@@ -224,6 +224,10 @@ Not all devices will support Homescreen-installationof our app. So before showin
 
 ## PWA - Service Workers & Workbox
 
+## PWA - Precaching
+
+Build the App for Production & Switch to Live Backend. To build the PWA app for production, run `quasar build -m pwa`.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

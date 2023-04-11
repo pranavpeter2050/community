@@ -280,3 +280,4 @@ Not all devices will support Homescreen-installationof our app. So before showin
 - [Quasar Local Storage Plugin](https://quasar.dev/quasar-plugins/web-storage#installation)
 - [Animations in Quasar](https://quasar.dev/options/animations)
 - [Animate.css](https://animate.style/)
+- [Workbox](https://developer.chrome.com/docs/workbox/)

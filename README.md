@@ -215,6 +215,9 @@ For best results, use source image with dimensions as specified in docs [here](h
 
 To generate icons using Icon Genie, read docs [here](https://quasar.dev/icongenie/command-list). Run the foolwing command to generate icon with respect to the source image *app-icon.png*: `icongenie generate -i app-icon.png --skip-trim --theme-color 212121`. This command is a little difficult to remmember, so we will create an *npm script* for the same. See `package.json: line 9`. After creating
 the script, run `npm run icons` to generate the icons.
+
+## PWA - Home Screen Installation (Prompt)
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

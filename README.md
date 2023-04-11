@@ -220,6 +220,8 @@ the script, run `npm run icons` to generate the icons.
 
 We are using the in-built Vue [Banner](https://quasar.dev/vue-components/banner) component to show a prompt to user to install our app on their (mobile) device.
 
+Not all devices will support Homescreen-installationof our app. So before showing the *App Install Banner* we must check if the devicce supports (PWA) app installtion. Read this interesting [article](https://web.dev/customize-install/#promote-installation) on *How to provide your own in-app install experience*.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

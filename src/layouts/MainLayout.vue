@@ -15,7 +15,7 @@
     </q-header>
 
     <q-footer class="bg-white" bordered>
-      <div class="banner-container bg-primary">
+      <div v-if="showAppInstallBanner" class="banner-container bg-primary">
         <div class="constrain">
           <q-banner inline-actions class="bg-primary text-white" dense>
             <template v-slot:avatar>
@@ -47,13 +47,29 @@
 </template>
 
 <script>
+// Initialize deferredPrompt for use later to show browser install prompt.
+let deferredPrompt;
+
 export default {
   name: 'MainLayout',
 
   data () {
     return {
-
+      showAppInstallBanner: false
     }
+  },
+
+  mounted() {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Update UI notify the user they can install the PWA
+      this.showAppInstallBanner = true;
+      // Optionally, send analytics event that PWA install promo was shown.
+      console.log(`'beforeinstallprompt' event was fired.`);
+    });
   }
 }
 </script>

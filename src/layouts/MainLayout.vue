@@ -26,8 +26,8 @@
 
             <template v-slot:action>
               <q-btn flat label="Yes" class="q-px-sm" dense @click="installApp"/>
-              <q-btn flat label="Later" class="q-px-sm" dense />
-              <q-btn flat label="Never" class="q-px-sm" dense />
+              <q-btn flat label="Later" class="q-px-sm" dense @click="showAppInstallBanner = false"/>
+              <q-btn flat label="Never" class="q-px-sm" dense @click="neverShowAppInstallBanner"/>
             </template>
           </q-banner>
         </div>
@@ -68,24 +68,33 @@ export default {
       deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === 'accepted') {
           console.log("User accepted the install prompt");
+          this.neverShowAppInstallBanner();
         } else {
           console.log("User dismessed the install prompt");
         }
       });
-
+    },
+    neverShowAppInstallBanner() {
+      this.showAppInstallBanner = false
+      this.$q.localStorage.set("neverShowAppInstallBanner", true)
     }
   },
   mounted() {
-    window.addEventListener('beforeinstallprompt', (e) => {
-      // Prevent the mini-infobar from appearing on mobile
-      e.preventDefault();
-      // Stash the event so it can be triggered later.
-      deferredPrompt = e;
-      // Update UI notify the user they can install the PWA
-      this.showAppInstallBanner = true;
-      // Optionally, send analytics event that PWA install promo was shown.
-      console.log(`'beforeinstallprompt' event was fired.`);
-    });
+    let neverShowAppInstallBanner = this.$q.localStorage.getItem("neverShowAppInstallBanner")
+    console.log("hello")
+    if (!neverShowAppInstallBanner) {
+      console.log("hello amigo")
+      window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+        // Update UI notify the user they can install the PWA
+        this.showAppInstallBanner = true;
+        // Optionally, send analytics event that PWA install promo was shown.
+        console.log(`'beforeinstallprompt' event was fired.`);
+      });
+    }
   }
 }
 </script>

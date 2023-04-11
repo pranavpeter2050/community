@@ -274,3 +274,4 @@ Not all devices will support Homescreen-installationof our app. So before showin
 - [Deploying with Firebase Hosting](https://firebase.google.com/docs/hosting/quickstart?hl=en&authuser=1)
 - [Sketch - online Vector Graphics editor](https://www.sketch.com/)
 - [Quasar Banner Component](https://quasar.dev/vue-components/banner#example--inline-actions)
+- [Quasar Local Storage Plugin](https://quasar.dev/quasar-plugins/web-storage#installation)

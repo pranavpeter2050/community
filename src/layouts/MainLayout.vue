@@ -15,23 +15,29 @@
     </q-header>
 
     <q-footer class="bg-white" bordered>
-      <div v-if="showAppInstallBanner" class="banner-container bg-primary">
-        <div class="constrain">
-          <q-banner inline-actions class="bg-primary text-white" dense>
-            <template v-slot:avatar>
-              <q-avatar color="white" text-color="grey-10" icon="eva-camera-outline" font-size="22px" />
-            </template>
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
+        <div v-if="showAppInstallBanner" class="banner-container bg-primary">
+          <div class="constrain">
+            <q-banner inline-actions class="bg-primary text-white" dense>
+              <template v-slot:avatar>
+                <q-avatar color="white" text-color="grey-10" icon="eva-camera-outline" font-size="22px" />
+              </template>
 
-            <b>Install Commmunity?</b>
+              <b>Install Commmunity?</b>
 
-            <template v-slot:action>
-              <q-btn flat label="Yes" class="q-px-sm" dense @click="installApp"/>
-              <q-btn flat label="Later" class="q-px-sm" dense @click="showAppInstallBanner = false"/>
-              <q-btn flat label="Never" class="q-px-sm" dense @click="neverShowAppInstallBanner"/>
-            </template>
-          </q-banner>
+              <template v-slot:action>
+                <q-btn flat label="Yes" class="q-px-sm" dense @click="installApp"/>
+                <q-btn flat label="Later" class="q-px-sm" dense @click="showAppInstallBanner = false"/>
+                <q-btn flat label="Never" class="q-px-sm" dense @click="neverShowAppInstallBanner"/>
+              </template>
+            </q-banner>
+          </div>
         </div>
-      </div>
+      </transition>
 
       <q-tabs class="text-grey-10 small-screen-only" active-color="primary" indicator-color="transparent"
       >
@@ -89,8 +95,10 @@ export default {
         e.preventDefault();
         // Stash the event so it can be triggered later.
         deferredPrompt = e;
-        // Update UI notify the user they can install the PWA
-        this.showAppInstallBanner = true;
+        setTimeout(() => {
+          // Update UI notify the user they can install the PWA
+          this.showAppInstallBanner = true;
+        }, 3000);
         // Optionally, send analytics event that PWA install promo was shown.
         console.log(`'beforeinstallprompt' event was fired.`);
       });

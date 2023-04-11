@@ -238,6 +238,7 @@ Not all devices will support Homescreen-installationof our app. So before showin
 - `computed` object to written below `data()` and above `methods` object. What is the use-case of *computed*?
 - the `getPosts()` method is triggered using the `created()` vue-hook. See `HomePage: line 116`.
 - In order to access the *formData, fields, files* etc. on the backend we use an npm package called **busboy**.
+- Quasar uses Animate.css to help add Animations. See *Animate.css* in reference.
 
 
 ## Reference
@@ -275,3 +276,5 @@ Not all devices will support Homescreen-installationof our app. So before showin
 - [Sketch - online Vector Graphics editor](https://www.sketch.com/)
 - [Quasar Banner Component](https://quasar.dev/vue-components/banner#example--inline-actions)
 - [Quasar Local Storage Plugin](https://quasar.dev/quasar-plugins/web-storage#installation)
+- [Animations in Quasar](https://quasar.dev/options/animations)
+- [Animate.css](https://animate.style/)

@@ -222,6 +222,8 @@ We are using the in-built Vue [Banner](https://quasar.dev/vue-components/banner)
 
 Not all devices will support Homescreen-installationof our app. So before showing the *App Install Banner* we must check if the devicce supports (PWA) app installtion. Read this interesting [article](https://web.dev/customize-install/#promote-installation) on *How to provide your own in-app install experience*.
 
+## PWA - Service Workers & Workbox
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

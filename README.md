@@ -226,7 +226,8 @@ Not all devices will support Homescreen-installationof our app. So before showin
 
 ## PWA - Precaching
 
-Build the App for Production & Switch to Live Backend. To build the PWA app for production, run `quasar build -m pwa`.
+Build the App for Production & Switch to Live Backend. To build the PWA app for production, run `quasar build -m pwa`. To deploy the app in Firebase Hosting, run `firebase deploy`.
+We have made a script to run the above commands, `npm run deploy`. See `package.json: line 10`.
 
 ## Interesting
 

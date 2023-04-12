@@ -11,7 +11,9 @@ import { clientsClaim } from 'workbox-core'
 import { precacheAndRoute, cleanupOutdatedCaches, createHandlerBoundToURL } from 'workbox-precaching'
 import { registerRoute, NavigationRoute } from 'workbox-routing'
 
-import { StaleWhileRevalidate } from 'workbox-strategies';
+import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
+import { ExpirationPlugin } from 'workbox-expiration';
+import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
 // self.skipWaiting()
 // clientsClaim()
@@ -33,6 +35,21 @@ precacheAndRoute(self.__WB_MANIFEST)
 // }
 
 /* caching strategies */
+registerRoute(
+  ({url}) => url.host.startsWith('fonts.g'),
+  new CacheFirst({
+    cacheName: 'google-fonts',
+    plugins: [
+      new ExpirationPlugin({
+        maxEntries: 30,
+      }),
+      new CacheableResponsePlugin({
+        statuses: [0, 200]
+      }),
+    ],
+  })
+);
+
 registerRoute(
   ({url}) => url.href.startsWith('http'),
   new StaleWhileRevalidate()

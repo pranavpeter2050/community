@@ -249,6 +249,37 @@ We can also use this command palette to clear site data by typing "clear site" a
 
 [Workbox Caching Strategies](https://developer.chrome.com/docs/workbox/modules/workbox-strategies/)
 
+### Stale while Revalidate Strategy
+
+### Cache First Strategy (for Google Font)
+
+The google-font will most certainly will not be cached as expected. To resolve this check this *github thread* [here](https://github.com/GoogleChrome/workbox/issues/1563#issuecomment-401880864).
+We will also need to import the [workbox-expiration](https://developer.chrome.com/docs/workbox/modules/workbox-expiration/) and [workbox-cacheable-response](https://developer.chrome.com/docs/workbox/modules/workbox-cacheable-response/) for the below code to work.
+
+```javascript
+// Pass the object*{}* as seen below in respective code in custom-service-worker.js file
+// import { ExpirationPlugin } from 'workbox-expiration';
+// import {CacheableResponsePlugin} from 'workbox-cacheable-response';
+// change workbox.expiration.Plugin to "ExpirationPlugin"
+// change workbox.cacheableResponse.Plugin to "CacheableResponsePlugin"
+// See CacheFirst() in custom-service-worker.js
+
+workbox.routing.registerRoute(
+  new RegExp('https://fonts.(?:googleapis|gstatic).com/(.*)'),
+  workbox.strategies.cacheFirst({
+    cacheName: 'google-fonts',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 30,
+      }),
+      new workbox.cacheableResponse.Plugin({
+        statuses: [0, 200]
+      }),
+    ],
+  }),
+);
+```
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

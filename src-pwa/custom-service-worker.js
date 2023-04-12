@@ -6,17 +6,20 @@
  * quasar.config.js > pwa > workboxMode is set to "injectManifest"
  */
 
+/* dependencies */
 import { clientsClaim } from 'workbox-core'
 import { precacheAndRoute, cleanupOutdatedCaches, createHandlerBoundToURL } from 'workbox-precaching'
 import { registerRoute, NavigationRoute } from 'workbox-routing'
 
-self.skipWaiting()
-clientsClaim()
+import { StaleWhileRevalidate } from 'workbox-strategies';
 
-// Use with precache injection
+// self.skipWaiting()
+// clientsClaim()
+
+/* configuration */ // Use with precache injection
 precacheAndRoute(self.__WB_MANIFEST)
 
-cleanupOutdatedCaches()
+// cleanupOutdatedCaches()
 
 // Non-SSR fallback to index.html
 // Production SSR fallback to offline.html (except for dev)
@@ -28,3 +31,9 @@ cleanupOutdatedCaches()
 //     )
 //   )
 // }
+
+/* caching strategies */
+registerRoute(
+  ({url}) => url.href.startsWith('http'),
+  new StaleWhileRevalidate()
+);

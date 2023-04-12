@@ -245,6 +245,10 @@ And then to go back online:
 
 We can also use this command palette to clear site data by typing "clear site" and hitting enter.
 
+## PWA - Caching Strategies
+
+[Workbox Caching Strategies](https://developer.chrome.com/docs/workbox/modules/workbox-strategies/)
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

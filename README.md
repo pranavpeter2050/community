@@ -279,6 +279,7 @@ workbox.routing.registerRoute(
   }),
 );
 ```
+## PWA - Background Sync
 
 ## Interesting
 

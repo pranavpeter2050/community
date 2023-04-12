@@ -281,6 +281,12 @@ workbox.routing.registerRoute(
 ```
 ## PWA - Background Sync
 
+### Check for Background Sync Support
+
+Not all browsers support Background Sync functionality. *Workbox* does provide a fallback method for such browsers. Check [here](https://caniuse.com/background-sync) for list of supported browsers.
+
+To check if Client (browser) supports Background Sync follow through this thread on [Stackoverflow](https://stackoverflow.com/a/60958564).
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

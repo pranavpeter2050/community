@@ -21,6 +21,9 @@ import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 /* configuration */ // Use with precache injection
 precacheAndRoute(self.__WB_MANIFEST)
 
+let backgroundSyncSupported = 'sync' in self.registration ? true : false
+console.log("backgroundSyncSupported: ", backgroundSyncSupported)
+
 // cleanupOutdatedCaches()
 
 // Non-SSR fallback to index.html

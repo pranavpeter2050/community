@@ -86,6 +86,15 @@ export default defineComponent({
       } else {
         return false
       }
+    },
+    backgorundSyncSupported() {
+      // first, check if user's browser supports "service-workers"
+      // if yes, then there will be a "serviceWorker" object in the "navigator" object
+      // and if the browser supports background sync
+      // then there will be a "syncManager" object in "window" object
+      if ('serviceWorker' in navigator && 'SyncManager' in window) return
+      true
+      return false
     }
   },
   methods: {
@@ -222,10 +231,18 @@ export default defineComponent({
         this.$q.loading.hide()
       }).catch(error => {
         console.log("error: ", error)
-        this.$q.dialog({
-          title: 'Error',
-          message: 'Sorry, could not create post!'
-        })
+        // check if user is offline using "navigator.onLine"
+        if (!navigator.onLine && this.backgorundSyncSupported) {
+          // redirect to Homepage
+          this.$q.notify('Post created offline!')
+          this.$router.push('/')
+        }
+        else {
+          this.$q.dialog({
+            title: 'Error',
+            message: 'Sorry, could not create post!'
+          })
+        }
         this.$q.loading.hide()
       })
     }

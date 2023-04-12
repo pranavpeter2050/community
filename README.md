@@ -229,6 +229,22 @@ Not all devices will support Homescreen-installationof our app. So before showin
 Build the App for Production & Switch to Live Backend. To build the PWA app for production, run `quasar build -m pwa`. To deploy the app in Firebase Hosting, run `firebase deploy`.
 We have made a script to run the above commands, `npm run deploy`. See `package.json: line 10`.
 
+## Note from Instructor:
+
+**A Quicker Way to Go Online / Offline**
+
+Since creating this course, I found a quicker way to go Online and Offline.
+
+Instead of killing the backend server, then disabling the Wifi, we can just do this (**in Chrome Devtools**):
+
+**Press Ctrl+Shift+P (Cmd+Shift+P on MacOS), type "offline" and hit enter.**
+
+And then to go back online:
+
+**Press Ctrl+Shift+P (Cmd+Shift+P on MacOS), type "online" and hit enter.**
+
+We can also use this command palette to clear site data by typing "clear site" and hitting enter.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

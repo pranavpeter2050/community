@@ -287,6 +287,12 @@ Not all browsers support Background Sync functionality. *Workbox* does provide a
 
 To check if Client (browser) supports Background Sync follow through this thread on [Stackoverflow](https://stackoverflow.com/a/60958564).
 
+### Create Post Background Sync
+
+To enable background syncing of Post, first we'll need to create a [Queue](https://developer.chrome.com/docs/workbox/modules/workbox-background-sync/#creating-a-queue).
+
+Then we have to listen for the [fetch](https://developer.chrome.com/docs/workbox/modules/workbox-background-sync/#adding-a-request-to-the-queue) event.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

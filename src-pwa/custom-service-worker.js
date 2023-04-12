@@ -14,6 +14,7 @@ import { registerRoute, NavigationRoute } from 'workbox-routing'
 import { CacheFirst, NetworkFirst, StaleWhileRevalidate } from 'workbox-strategies';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
+import { Queue } from 'workbox-background-sync';
 
 // self.skipWaiting()
 // clientsClaim()
@@ -36,6 +37,12 @@ console.log("backgroundSyncSupported: ", backgroundSyncSupported)
 //     )
 //   )
 // }
+
+/* queue - createPost */
+let createPostQueue = null
+if (backgroundSyncSupported) {
+  createPostQueue = new Queue('createPostQueue');
+}
 
 /* caching strategies */
 registerRoute(
@@ -62,3 +69,21 @@ registerRoute(
   ({url}) => url.href.startsWith('http'),
   new StaleWhileRevalidate()
 );
+
+
+/* evets fetch */
+if (backgroundSyncSupported) {
+  self.addEventListener('fetch', event => {
+    // Add in your own criteria here to return early if this
+    // isn't a request that should use background sync.
+    if (event.request.url.endsWith('/createPost')) {
+      // Clone the request to ensure it's safe to read when
+      // adding to the Queue
+      const promiseChain = fetch(event.request.clone()).catch((err) => {
+        return createPostQueue.pushRequest({request: event.request});
+      });
+
+      event.waitUntil(promiseChain);
+    }
+  });
+}

@@ -11,7 +11,7 @@ import { clientsClaim } from 'workbox-core'
 import { precacheAndRoute, cleanupOutdatedCaches, createHandlerBoundToURL } from 'workbox-precaching'
 import { registerRoute, NavigationRoute } from 'workbox-routing'
 
-import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
+import { CacheFirst, NetworkFirst, StaleWhileRevalidate } from 'workbox-strategies';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 
@@ -48,6 +48,11 @@ registerRoute(
       }),
     ],
   })
+);
+
+registerRoute(
+  ({url}) => url.pathname.startsWith('/posts'),
+  new NetworkFirst()
 );
 
 registerRoute(

@@ -338,6 +338,14 @@ Example:
 
 ```
 
+### Show Offline Post was upload (1) - Add onSync Hook to Queue
+
+[Observe queue operations when using background sync #2044](https://github.com/GoogleChrome/workbox/issues/2044#issuecomment-486390207)
+An error occurs when we implement the `onSync` hook using example in the above link. This is solved with reference on the answer in below link. The `queue` is changed to an *object* i.e. `{queue}`.
+[BackgroundSync - Unable to do anything in "onSync" (workbox 4.1.1.) #1982](https://github.com/GoogleChrome/workbox/issues/1982#issuecomment-475645712)
+Now when `{queue}` is passed, we need to change the `this.` refernece to `queue.` for thefunction to work properly.
+Related link: <https://developer.chrome.com/docs/workbox/reference/workbox-background-sync/#type-QueueOptions>
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

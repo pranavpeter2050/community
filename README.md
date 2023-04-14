@@ -346,6 +346,13 @@ An error occurs when we implement the `onSync` hook using example in the above l
 Now when `{queue}` is passed, we need to change the `this.` refernece to `queue.` for thefunction to work properly.
 Related link: <https://developer.chrome.com/docs/workbox/reference/workbox-background-sync/#type-QueueOptions>
 
+### Show Offline Post was upload (2) - Send Message to the Client (Browser)
+
+[Stackoverflow - Service worker communicate to clients](https://stackoverflow.com/a/42162961)
+The *event listener (which checks if the service-worker has emptied the queue / uploaded offline post)* is triggered twice (as can be seen in the console logs). To avoid this we need to keep the *Homepage* alive while the user navigates to Camerapage and creates a new post. To do this we need to add a `<keep-alive></keep-alive>` tag around the `<routerview />` component which is responsible for displaying our pages. By default, this will keep all the pages alive. Since, we only need the Homepage to be alive in the background, we need to specify that *<keep-alive> tag* like this, `<keep-alive :include="['HomePage']" > ... </keep-alive>` .See `MainLayout.vue: line 50`.
+
+Since the Homepage is **alive** all the time, the `getPosts()` methods will not be triggered every this the user returns to the Homepage. To resolve this we use the `activated()` **vue hook** so that the `getPosts()` mmethod is triggered evertime a user visits the Homepage. See `HomePage.vue: line 171`.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

@@ -100,6 +100,12 @@ export default defineComponent({
       loadingPosts: false
     }
   },
+  computed: {
+    serviceWorkerSupported() {
+      if ('serviceWorker' in navigator) return true
+      return false
+    }
+  },
   methods: {
     niceDate(timeStamp) {
       return date.formatDate(timeStamp, 'MMMM D, h:mmA')
@@ -152,10 +158,21 @@ export default defineComponent({
           console.log("Error accessing IndexedDB: ", err)
         })
       })
+    },
+    listenForOfflinePostUploaded() {
+      if (this.serviceWorkerSupported) {
+        const channel = new BroadcastChannel('sw-messages');
+        channel.addEventListener('message', event => {
+            console.log('Received', event.data);
+        });
+      }
     }
   },
-  created() {
+  activated() {
     this.getPosts()
+  },
+  created() {
+    this.listenForOfflinePostUploaded()
   }
 })
 </script>

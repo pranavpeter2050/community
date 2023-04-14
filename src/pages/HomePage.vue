@@ -118,7 +118,17 @@ export default defineComponent({
     },
     getOfflinePosts() {
       let db = openDB('workbox-background-sync').then(db => {
-        console.log('database is open: ', db)
+        db.getAll('requests').then(failedRequests => {
+          // console.log("failedfailedRequests: ", failedRequests)
+          failedRequests.forEach(failedRequest => {
+            if (failedRequest.queueName == "createPostQueue") {
+              // create a Javaescript-request-object to save the requestData from failedRequest object
+              let request = new Request(failedRequest.requestData.url, failedRequest.requestData)
+            }
+          })
+        }).catch(err => {
+          console.log("Error accessing IndexedDB: ", err)
+        })
       })
     }
   },

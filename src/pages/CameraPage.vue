@@ -59,7 +59,6 @@
 <script>
 import { defineComponent } from 'vue'
 import { uid } from 'quasar'
-import { openDB, deleteDB, wrap, unwrap } from 'idb'
 // require('md-gum-polyfill') // this is not the correct why to use in quasar/vue
 import 'md-gum-polyfill';
 

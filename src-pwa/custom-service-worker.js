@@ -20,6 +20,10 @@ import { Queue } from 'workbox-background-sync';
 // clientsClaim()
 
 /* configuration */ // Use with precache injection
+
+// disable workbox logs
+self.__WB_DISABLE_DEV_LOGS = true
+
 precacheAndRoute(self.__WB_MANIFEST)
 
 let backgroundSyncSupported = 'sync' in self.registration ? true : false

@@ -310,6 +310,34 @@ async function doDatabaseStuff() {
 
 ```
 
+### Disable the Workbox Logs
+
+To disable the Workbox logs, just set `self.__WB_DISABLE_DEV_LOGS = true` in `custom-service-worker.js` near the top of the file. Huge thanks to Rolland Orgonas for providing the solution!
+
+Example:
+
+```javascript
+/*
+  dependencies
+*/
+
+  import {precacheAndRoute} from 'workbox-precaching'
+  ...
+
+/*
+  config
+*/
+
+  // disable workbox logs
+  self.__WB_DISABLE_DEV_LOGS = true
+
+  precacheAndRoute(self.__WB_MANIFEST);
+
+  let backgroundSyncSupported = 'sync' in self.registration ? true : false
+  console.log('backgroundSyncSupported: ', backgroundSyncSupported)
+
+```
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

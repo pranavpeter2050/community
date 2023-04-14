@@ -353,6 +353,8 @@ The *event listener (which checks if the service-worker has emptied the queue / 
 
 Since the Homepage is **alive** all the time, the `getPosts()` methods will not be triggered every this the user returns to the Homepage. To resolve this we use the `activated()` **vue hook** so that the `getPosts()` mmethod is triggered evertime a user visits the Homepage. See `HomePage.vue: line 171`.
 
+## PWA - Push Notifications
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

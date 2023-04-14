@@ -293,6 +293,23 @@ To enable background syncing of Post, first we'll need to create a [Queue](https
 
 Then we have to listen for the [fetch](https://developer.chrome.com/docs/workbox/modules/workbox-background-sync/#adding-a-request-to-the-queue) event.
 
+### Display the Offline Post (1) - Opening the IndexedDB database with IDB
+
+Once we successfully create a post in background, we'll need to display this post offline in the Homepage. Javascript does have a build in IndexedDB API that will help us get the *post* data from IndexedDB BUT apparently it is "very clunky and not much fun to use". So we are using a **IDB library** to do this instead. See *IDB Library* in reference.
+
+Run `npm install idb --save` to install *idb*.
+
+```javascript
+import { openDB, deleteDB, wrap, unwrap } from 'idb';
+
+async function doDatabaseStuff() {
+  const db = await openDB(…);
+}
+
+/* Instead of using "async-await" we are using "then-catch" */
+
+```
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
@@ -350,3 +367,4 @@ Then we have to listen for the [fetch](https://developer.chrome.com/docs/workbox
 - [Animations in Quasar](https://quasar.dev/options/animations)
 - [Animate.css](https://animate.style/)
 - [Workbox](https://developer.chrome.com/docs/workbox/)
+- [IDB Library](https://github.com/jakearchibald/idb#readme)

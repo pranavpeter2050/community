@@ -86,6 +86,7 @@
 <script>
 import { defineComponent } from 'vue'
 import { date } from 'quasar'
+import { openDB } from 'idb'
 
 export default defineComponent({
   name: 'HomePage',
@@ -104,12 +105,20 @@ export default defineComponent({
       this.$axios.get(`${ process.env.API }/posts`).then(response => {
         this.posts = response.data
         this.loadingPosts = false
+        if (!navigator.onLine) {
+          this.getOfflinePosts()
+        }
       }).catch(error => {
         this.$q.dialog({
           title: 'Error',
           message: 'Could not fetch posts.'
         })
         this.loadingPosts = false
+      })
+    },
+    getOfflinePosts() {
+      let db = openDB('workbox-background-sync').then(db => {
+        console.log('database is open: ', db)
       })
     }
   },

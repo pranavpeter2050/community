@@ -124,6 +124,24 @@ export default defineComponent({
             if (failedRequest.queueName == "createPostQueue") {
               // create a Javaescript-request-object to save the requestData from failedRequest object
               let request = new Request(failedRequest.requestData.url, failedRequest.requestData)
+              request.formData().then(formData => {
+                let offlinePost = {}
+                offlinePost.id = formData.get('id')
+                offlinePost.caption = formData.get('caption')
+                offlinePost.location = formData.get('location')
+                offlinePost.date = parseInt(formData.get('date'))
+                offlinePost.offline = true
+
+                // now we need to get the image in base64-url-encoded form
+                // we can do this "FileReader"
+                let reader = new FileReader()
+                reader.readAsDataURL(formData.get('file'))
+                reader.onloadend = () => {
+                  offlinePost.imageUrl = reader.result
+                  // we use "unshift()" so that the Post will be shown on top in the Homepage
+                  this.posts.unshift(offlinePost)
+                }
+              })
             }
           })
         }).catch(err => {

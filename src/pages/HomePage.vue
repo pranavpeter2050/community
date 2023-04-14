@@ -163,7 +163,11 @@ export default defineComponent({
       if (this.serviceWorkerSupported) {
         const channel = new BroadcastChannel('sw-messages');
         channel.addEventListener('message', event => {
-            console.log('Received', event.data);
+          console.log('Received', event.data);
+          if (event.data.msg == "offline-post-uploaded") {
+            let offlinePostCount = this.posts.filter(post => post.offline == true).length
+            this.posts[offlinePostCount - 1].offline = false
+          }
         });
       }
     }

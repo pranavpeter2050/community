@@ -92,8 +92,7 @@ export default defineComponent({
       // if yes, then there will be a "serviceWorker" object in the "navigator" object
       // and if the browser supports background sync
       // then there will be a "syncManager" object in "window" object
-      if ('serviceWorker' in navigator && 'SyncManager' in window) return
-      true
+      if ('serviceWorker' in navigator && 'SyncManager' in window) return true
       return false
     }
   },

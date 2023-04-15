@@ -172,10 +172,10 @@ export default defineComponent({
       }
     }
   },
-  activated() {
-    this.getPosts()
+  onActivated() {
   },
   created() {
+    this.getPosts()
     this.listenForOfflinePostUploaded()
   }
 })

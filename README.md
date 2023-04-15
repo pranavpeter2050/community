@@ -373,6 +373,10 @@ Since the Homepage is **alive** all the time, the `getPosts()` methods will not 
 - In order to access the *formData, fields, files* etc. on the backend we use an npm package called **busboy**.
 - Quasar uses Animate.css to help add Animations. See *Animate.css* in reference.
 
+## Known Bugs
+
+- The Dialog says post not created in camerapage even though offline post is working fine. (fixed `CameraPage.vue: line 95`).
+- the `getPosts()` methos not working as desired inside `onActivated()` hook. So for time-being placed back inside the `created()` hook in HomePage.vue. `activated()` taught in this [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21110176#overview).
 
 ## Reference
 

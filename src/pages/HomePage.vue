@@ -7,17 +7,17 @@
     >
       <div v-if="showNotificationsBanner" class="banner-container bg-primary">
         <div class="constrain">
-          <q-banner inline-actions class="bg-primary text-white" dense>
+          <q-banner class="bg-grey-3 q-mb-md">
             <template v-slot:avatar>
-              <q-avatar color="white" text-color="grey-10" icon="eva-camera-outline" font-size="22px" />
+              <q-icon name="eva-bell-outline" color="primary" />
             </template>
 
-            <b>Install Commmunity?</b>
+            Would you like to enable notifications?
 
             <template v-slot:action>
-              <q-btn flat label="Yes" class="q-px-sm" dense @click="enableNotifications"/>
-              <q-btn flat label="Later" class="q-px-sm" dense @click="showNotificationsBanner = false"/>
-              <q-btn flat label="Never" class="q-px-sm" dense @click="neverShowNotificationsBanner"/>
+              <q-btn flat label="Yes" class="q-px-sm" color="primary" dense @click="enableNotifications"/>
+              <q-btn flat label="Later" class="q-px-sm" color="primary" dense @click="showNotificationsBanner = false"/>
+              <q-btn flat label="Never" class="q-px-sm" color="primary" dense @click="neverShowNotificationsBanner"/>
             </template>
           </q-banner>
         </div>

@@ -387,6 +387,8 @@ Since the Homepage is **alive** all the time, the `getPosts()` methods will not 
 
 ### Create an "Enable Notifications" Banner (1) - Repurpose the App Install Banner
 
+### Create an "Enable Notifications" Banner (2) - Improve the Style
+
 
 ## Interesting
 

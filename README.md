@@ -385,6 +385,9 @@ Since the Homepage is **alive** all the time, the `getPosts()` methods will not 
 - Displayed anytime, even if the user is not using the app
 - Has complex requirement
 
+### Create an "Enable Notifications" Banner (1) - Repurpose the App Install Banner
+
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

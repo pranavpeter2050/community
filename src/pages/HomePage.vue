@@ -1,5 +1,29 @@
 <template>
   <q-page class="constrain q-pa-md">
+    <transition
+      appear
+      enter-active-class="animated fadeIn"
+      leave-active-class="animated fadeOut"
+    >
+      <div v-if="showNotificationsBanner" class="banner-container bg-primary">
+        <div class="constrain">
+          <q-banner inline-actions class="bg-primary text-white" dense>
+            <template v-slot:avatar>
+              <q-avatar color="white" text-color="grey-10" icon="eva-camera-outline" font-size="22px" />
+            </template>
+
+            <b>Install Commmunity?</b>
+
+            <template v-slot:action>
+              <q-btn flat label="Yes" class="q-px-sm" dense @click="enableNotifications"/>
+              <q-btn flat label="Later" class="q-px-sm" dense @click="showNotificationsBanner = false"/>
+              <q-btn flat label="Never" class="q-px-sm" dense @click="neverShowNotificationsBanner"/>
+            </template>
+          </q-banner>
+        </div>
+      </div>
+    </transition>
+
     <div class="row q-col-gutter-lg">
       <div class="col-12 col-sm-8">
         <template v-if="!loadingPosts && posts.length">
@@ -97,7 +121,8 @@ export default defineComponent({
   data() {
     return {
       posts: [],
-      loadingPosts: false
+      loadingPosts: false,
+      showNotificationsBanner: false
     }
   },
   computed: {
@@ -170,6 +195,19 @@ export default defineComponent({
           }
         });
       }
+    },
+    initNotificationsBanner() {
+      let neverShowNotificationsBanner = this.$q.localStorage.getItem("neverShowNotificationsBanner")
+      if (!neverShowNotificationsBanner) {
+        this.showNotificationsBanner = true
+      }
+    },
+    enableNotifications() {
+      console.log("enableNotifications")
+    },
+    neverShowNotificationsBanner() {
+      this.showNotificationsBanner = false
+      this.$q.localStorage.set("neverShowNotificationsBanner", true)
     }
   },
   onActivated() {
@@ -177,6 +215,7 @@ export default defineComponent({
   created() {
     this.getPosts()
     this.listenForOfflinePostUploaded()
+    this.initNotificationsBanner()
   }
 })
 </script>

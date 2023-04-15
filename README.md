@@ -355,6 +355,36 @@ Since the Homepage is **alive** all the time, the `getPosts()` methods will not 
 
 ## PWA - Push Notifications
 
+### How Push Notifications Work - Push Notification Workflow
+
+- Get Notification Permission
+- Create a Push Subscription. Different browsers have their own "Push server".
+- Store the Subscriptions in Database (in our case, Firebase)
+  - Unique keys
+  - Unique Push Server URL
+- Backend to Loop through Subscriptions (we'll be using our node.js backend for this)
+- Use our Service Worker (in our case, Workbox) to listen for Push Messages
+- Display the Notification
+- Listen to Notification Click
+- Bring user back to our app if noticiation is clicked
+- Protect our Push Notifications with Unique keys
+
+#### Notifications vs. Push Notifications
+
+##### Notifications
+
+- Require User Permission
+- Can be displayed anytime we like, but only when user is using our app
+- Can be triggered  in our app's Javascript code
+- Minimal Requirements: No need for subscriptions, backends or push notifications or service-workers
+
+##### Push Notifications
+
+- Require User Permission
+- Sent to all of our subscribed users at once
+- Displayed anytime, even if the user is not using the app
+- Has complex requirement
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

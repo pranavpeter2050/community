@@ -422,6 +422,8 @@ C:\GitHub\community\backend> npm install web-push --save
 
 We'll be using the terminal to generate our Public & Private Keys. In order to access the web-push-CLI, we need to add a script: `web-push` to our `backend/package.json` file. To generate vapid keys using web-push-CLI, run command `npm run web-push generate-vapid-keys`.
 
+To use the above generated vapid keys, read the web-push docs [here](https://github.com/web-push-libs/web-push#using-vapid-key-for-applicationserverkey).
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

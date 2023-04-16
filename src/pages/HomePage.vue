@@ -234,7 +234,14 @@ export default defineComponent({
       }
     },
     createPushSubscription(reg) {
-      reg.pushManager.subscribe()
+      let vapidPublicKey = "BBrqKtOx1B_yPo-9uBMLawhAVEnsq0XpspUrnwJQYCQEdEr2DobPCT2qHU_QcZPpmULu9bLc_8HF7ivHoIVgQ7I"
+      let vapidPublicKeyConverted = this.urlBase64ToUint8Array(vapidPublicKey)
+      reg.pushManager.subscribe({
+        applicationServerKey: vapidPublicKeyConverted,
+        userVisibleOnly: true
+      }).then(newSubscription => {
+        console.log("newSubscription: ", newSubscription)
+      })
     },
     displayGrantedNotification() {
       /* new Notification("You're subscribed to notifications!", {
@@ -280,6 +287,20 @@ export default defineComponent({
     neverShowNotificationsBanner() {
       this.showNotificationsBanner = false
       this.$q.localStorage.set("neverShowNotificationsBanner", true)
+    },
+    urlBase64ToUint8Array(base64String) {
+      const padding = '='.repeat((4 - base64String.length % 4) % 4);
+      const base64 = (base64String + padding)
+        .replace(/-/g, '+')
+        .replace(/_/g, '/');
+
+      const rawData = window.atob(base64);
+      const outputArray = new Uint8Array(rawData.length);
+
+      for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+      }
+      return outputArray;
     }
   },
   onActivated() {

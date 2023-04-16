@@ -412,6 +412,16 @@ Uncaught (in promise) DOMException: Registration failed - missing applicationSer
 We will be sending our Push notifications from our backend server to the *browser Push notification servers*. Each *Push subscription* that we create will contain a unique *URL*. Without some kind of *security mechanism*, anyone who has access to this *URL* can send push-notifications to this URL and spam that user.
 So we need to secure our Push subscriptions and make sure that Push notifications for our app can only be send from our backend server, i.e. we'll need a way to *authenticate* our backend server with the *browser push notidfication server*. We do this using two unique keys: Private and Public key. The public key in this case is the **applicationServerKey** seen in the error message in Console. We store this public key in our Javascript and send this key to our `pushManager.subscribe()` method. The Private key only lives on our Backend server.
 
+### Secure the Push Subscription using Web Push
+
+We can genereate these keys by using [web-push-library](https://github.com/web-push-libs/web-push#install). Since we'll also be using this library to send out Notifications in our Backend code, we need to install this into our backend project.
+
+```node
+C:\GitHub\community\backend> npm install web-push --save
+```
+
+We'll be using the terminal to generate our Public & Private Keys. In order to access the web-push-CLI, we need to add a script: `web-push` to our `backend/package.json` file. To generate vapid keys using web-push-CLI, run command `npm run web-push generate-vapid-keys`.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

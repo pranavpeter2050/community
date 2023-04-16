@@ -113,5 +113,11 @@ app.post('/createPost', (request, response) => {
 
 })
 
+/* api endpoint - createSubscription */
+app.post('/createSubscription', (request, response) => {
+  response.set('Access-Control-Allow-Origin', '*')
+  console.log("request: ", request)
+})
+
 /* listen (port) */
 app.listen(3000)

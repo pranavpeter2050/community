@@ -240,7 +240,9 @@ export default defineComponent({
         applicationServerKey: vapidPublicKeyConverted,
         userVisibleOnly: true
       }).then(newSubscription => {
-        console.log("newSubscription: ", newSubscription)
+        // console.log("newSubscription: ", newSubscription)
+        let newSubscriptionData = newSubscription.toJSON()
+        console.log("newSubscriptionData: ", newSubscriptionData)
       })
     },
     displayGrantedNotification() {

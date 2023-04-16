@@ -389,6 +389,9 @@ Since the Homepage is **alive** all the time, the `getPosts()` methods will not 
 
 ### Create an "Enable Notifications" Banner (2) - Improve the Style
 
+### Request Notification Permission
+
+If the user's browser supports "Push notifications", then there will be a "PushManager" object in "window" object. See `HomePage.vue: line 134`. Similarly, if we want to check for "Notifications" support, then we'll need to check for "Notification" object in the "window" object.
 
 ## Interesting
 

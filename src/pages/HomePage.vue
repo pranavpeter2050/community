@@ -5,7 +5,7 @@
       enter-active-class="animated fadeIn"
       leave-active-class="animated fadeOut"
     >
-      <div v-if="showNotificationsBanner" class="banner-container bg-primary">
+      <div v-if="showNotificationsBanner && pushNotificationsSupported" class="banner-container bg-primary">
         <div class="constrain">
           <q-banner class="bg-grey-3 q-mb-md">
             <template v-slot:avatar>
@@ -129,6 +129,10 @@ export default defineComponent({
     serviceWorkerSupported() {
       if ('serviceWorker' in navigator) return true
       return false
+    },
+    pushNotificationsSupported() {
+      if ('PushManager' in window) return true
+      return false
     }
   },
   methods: {
@@ -203,7 +207,11 @@ export default defineComponent({
       }
     },
     enableNotifications() {
-      console.log("enableNotifications")
+      if (this.pushNotificationsSupported) {
+        Notification.requestPermission(result => {
+          console.log("result: ", result)
+        })
+      }
     },
     neverShowNotificationsBanner() {
       this.showNotificationsBanner = false

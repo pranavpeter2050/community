@@ -210,8 +210,15 @@ export default defineComponent({
       if (this.pushNotificationsSupported) {
         Notification.requestPermission(result => {
           console.log("result: ", result)
+          this.neverShowNotificationsBanner()
+          if (result == "granted") {
+            this.displayGrantedNotification()
+          }
         })
       }
+    },
+    displayGrantedNotification() {
+      new Notification("You're subscribed to notifications!")
     },
     neverShowNotificationsBanner() {
       this.showNotificationsBanner = false

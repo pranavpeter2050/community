@@ -393,6 +393,8 @@ Since the Homepage is **alive** all the time, the `getPosts()` methods will not 
 
 If the user's browser supports "Push notifications", then there will be a "PushManager" object in "window" object. See `HomePage.vue: line 134`. Similarly, if we want to check for "Notifications" support, then we'll need to check for "Notification" object in the "window" object.
 
+### Showing & Customizing Notifications from our app
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

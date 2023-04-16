@@ -397,6 +397,10 @@ If the user's browser supports "Push notifications", then there will be a "PushM
 
 Mozilla MDN documents have a list of options that can help customize our app Notifications. Click [here](https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification) to read more.
 
+### Displaying a Notification using the Service Worker
+
+In `Homepage.vue: line 221` we are displaying a Notification using Javascript. We can also display Notifications using our Service Worker.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

@@ -212,10 +212,29 @@ export default defineComponent({
           console.log("result: ", result)
           this.neverShowNotificationsBanner()
           if (result == "granted") {
-            this.displayGrantedNotification()
+            // this.displayGrantedNotification()
+            this.checkForExistingPushSubscription()
           }
         })
       }
+    },
+    checkForExistingPushSubscription() {
+      if (this.serviceWorkerSupported && this.pushNotificationsSupported) {
+        let reg
+        // check if ServiceWorker is ready, this place/code is like a bridge between our javasxcript code and service-worker
+        navigator.serviceWorker.ready.then(swreg => {
+          reg = swreg
+          return swreg.pushManager.getSubscription()
+        }).then(subscription => {
+          if (!subscription) {
+            // console.log("No existing subscriptions. Create a new push subscription")
+            this.createPushSubscription(reg)
+          }
+        })
+      }
+    },
+    createPushSubscription(reg) {
+      reg.pushManager.subscribe()
     },
     displayGrantedNotification() {
       /* new Notification("You're subscribed to notifications!", {

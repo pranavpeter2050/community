@@ -423,6 +423,7 @@ In `Homepage.vue: line 221` we are displaying a Notification using Javascript. W
 
 - The Dialog says post not created in camerapage even though offline post is working fine. (fixed `CameraPage.vue: line 95`).
 - the `getPosts()` methos not working as desired inside `onActivated()` hook. So for time-being placed back inside the `created()` hook in HomePage.vue. `activated()` taught in this [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21110176#overview).
+- When the Notification was closed, the code did not console.log the messaged as expected. Refernce [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21110238)
 
 ## Reference
 

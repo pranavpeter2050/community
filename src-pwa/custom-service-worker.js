@@ -94,7 +94,7 @@ registerRoute(
 );
 
 
-/* evets fetch */
+/* events - fetch */
 if (backgroundSyncSupported) {
   self.addEventListener('fetch', event => {
     // Add in your own criteria here to return early if this
@@ -110,3 +110,20 @@ if (backgroundSyncSupported) {
     }
   });
 }
+
+/* events - notification */
+self.addEventListener('notificationclick', event => {
+  let notification = event.notification
+  let action = event.action
+
+  if (action == "hello") {
+    console.log("Hello button was clicked")
+  }
+  else if (action == "goodbye") {
+    console.log("Goodbye button was clicked")
+  }
+  else {
+    console.log("Main noitification was clicked")
+  }
+  notification.close()
+})

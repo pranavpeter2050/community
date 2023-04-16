@@ -395,6 +395,8 @@ If the user's browser supports "Push notifications", then there will be a "PushM
 
 ### Showing & Customizing Notifications from our app
 
+Mozilla MDN documents have a list of options that can help customize our app Notifications. Click [here](https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification) to read more.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

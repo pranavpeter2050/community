@@ -218,7 +218,17 @@ export default defineComponent({
       }
     },
     displayGrantedNotification() {
-      new Notification("You're subscribed to notifications!")
+      new Notification("You're subscribed to notifications!", {
+        body: 'Thanks for subscribing!',
+        icon: 'icons/icon-128x128.png',
+        image: 'icons/icon-128x128.png',
+        badge: 'icons/icon-128x128.png',
+        dir: 'ltr',
+        lang: 'en-US',
+        vibrate: [100, 50, 200],
+        tag: 'confirm-notification',
+        renotify: true
+      })
     },
     neverShowNotificationsBanner() {
       this.showNotificationsBanner = false

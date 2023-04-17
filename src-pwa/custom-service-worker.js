@@ -126,7 +126,10 @@ self.addEventListener('push', event => {
         {
           body: data.body,
           icon: 'icons/icon-128x128.png',
-          badge: 'icons/icon-128x128.png'
+          badge: 'icons/icon-128x128.png',
+          data: {
+            openUrl: data.openUrl
+          }
         }
       )
     )
@@ -154,11 +157,11 @@ self.addEventListener('notificationclick', event => {
           return cli.visibilityState === 'visible'
         })
         if (clientUsingApp) {
-          clientUsingApp.navigate('/#/')
+          clientUsingApp.navigate(notification.data.openUrl)
           clientUsingApp.focus()
         }
         else {
-          clients.openWindow('/#/')
+          clients.openWindow(notification.data.openUrl)
         }
       })
     )

@@ -139,7 +139,8 @@ app.post('/createPost', (request, response) => {
 
             let pushContent = {
               title: 'New Community Post!',
-              body: 'New Post dropped. Check it out!'
+              body: 'New Post dropped. Check it out!',
+              openUrl: '/#/'
             }
             let pushContentStringified = JSON.stringify(pushContent)
             webpush.sendNotification(pushSubscription, pushContentStringified);

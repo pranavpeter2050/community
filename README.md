@@ -436,6 +436,11 @@ To avoid this, uncheck/disable the **Unregister service worker** option before c
 - Once it's finished loading, close the tab.
 - Open the app in a new tab.
 
+### Important - If using "Cloud functions".
+
+FireBase free plans only allows "Google services". So if we use any other browser as our push notification server then we'll get an error. If we are on the Paid plan, we'll not get the error but will be charged a fare. So to avoid getting the error we check if our push notification server endpoint is a google/chrome service. See `index.js: line 131`.
+
+"Since I'm not using **Cloud Functions** in this project, I'll remove the *check done above (index.js:131)*". See [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21260322#overview) for more context.
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

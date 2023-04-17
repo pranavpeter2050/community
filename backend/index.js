@@ -128,20 +128,22 @@ app.post('/createPost', (request, response) => {
         return subscriptions
       }).then(subscriptios => {
         subscriptions.forEach(subscription => {
-          const pushSubscription = {
-            endpoint: subscription.endpoint,
-            keys: {
-              auth: subscription.key.auth,
-              p256dh: subscription.key.p256dh
-            }
-          };
+          // if (subscription.endpoint.startsWith('https://fcm.googleapis.com')) {
+            const pushSubscription = {
+              endpoint: subscription.endpoint,
+              keys: {
+                auth: subscription.key.auth,
+                p256dh: subscription.key.p256dh
+              }
+            };
 
-          let pushContent = {
-            title: 'New Community Post!',
-            body: 'New Post dropped. Check it out!'
-          }
-          let pushContentStringified = JSON.stringify(pushContent)
-          webpush.sendNotification(pushSubscription, pushContentStringified);
+            let pushContent = {
+              title: 'New Community Post!',
+              body: 'New Post dropped. Check it out!'
+            }
+            let pushContentStringified = JSON.stringify(pushContent)
+            webpush.sendNotification(pushSubscription, pushContentStringified);
+          // }
         })
       })
     }

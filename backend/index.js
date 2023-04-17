@@ -8,6 +8,7 @@ let path = require('path');
 let os = require('os');
 let fs = require('fs');
 let UUID = require('uuid-v4');
+let webpush = require('web-push');
 
 /* config - express */
 const app = express()
@@ -22,6 +23,15 @@ initializeApp({
 
 const db = getFirestore();
 const bucket = getStorage().bucket();
+
+/*
+  config - webpush
+*/
+webpush.setVapidDetails(
+  'mailto:test@test.com',
+  'BBrqKtOx1B_yPo-9uBMLawhAVEnsq0XpspUrnwJQYCQEdEr2DobPCT2qHU_QcZPpmULu9bLc_8HF7ivHoIVgQ7I', // public key
+  '9i3Hm3VZ9JuL8m6dz6qREiFl58jinsrah8jV4E8CBa0' // private key
+);
 
 /* api endpoint - posts */
 app.get('/posts', (request, response) => {
@@ -101,12 +111,40 @@ app.post('/createPost', (request, response) => {
         date: parseInt(fields.date),
         imageUrl: `https://firebasestorage.googleapis.com/v0/b/${ bucket.name }/o/${ uploadedFile.name }?alt=media&token=${ uuid }`
       }).then(() => {
+        sendPushNotification()
         response.send("post id: " + fields.id)
       })
     }
     // console.log('Done parsing form!');
     // response.end(); // response.data object will be empty, so instead use below line
     // response.send("Done parsing form!")
+
+    function sendPushNotification() {
+      let subscriptions = []
+      db.collection('subscription').get().then(snapshot => {
+        snapshot.forEach((doc) => {
+          subscriptions.push(doc.data())
+        });
+        return subscriptions
+      }).then(subscriptios => {
+        subscriptions.forEach(subscription => {
+          const pushSubscription = {
+            endpoint: subscription.endpoint,
+            keys: {
+              auth: subscription.key.auth,
+              p256dh: subscription.key.p256dh
+            }
+          };
+
+          let pushContent = {
+            title: 'New Community Post!',
+            body: 'New Post dropped. Check it out!'
+          }
+          let pushContentStringified = JSON.stringify(pushContent)
+          webpush.sendNotification(pushSubscription, pushContentStringified);
+        })
+      })
+    }
   });
 
   request.pipe(busboyy);

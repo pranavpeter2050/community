@@ -426,6 +426,16 @@ To use the above generated vapid keys, read the web-push docs [here](https://git
 
 We are using the [qs-libeary](https://github.com/ljharb/qs#readme) to convert the Push-subscription JSON object object to a *query-string*. We shouldn't need to install this package cause it already installed in Quasar projects.
 
+### A Note about Push Subscriptions & Service Workers
+
+Each subscription that we store in the database, refers to a particular browser on a particular device. When we **Clear Site data (inluding "Unregister service worker" option)** on that browser, then the realted subscription data in the database will become **redundant** i.e. it will no longer refer to the particular browser on that device.
+
+To avoid this, uncheck/disable the **Unregister service worker** option before clearing the site data. However, if we now make any changes to our `custom-service-worker.js` file, we won't be able to see any changes on the web browser. To force the browser to load the latest service-worker:
+
+- Reload the page.
+- Once it's finished loading, close the tab.
+- Open the app in a new tab.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

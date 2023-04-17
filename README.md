@@ -441,6 +441,11 @@ To avoid this, uncheck/disable the **Unregister service worker** option before c
 FireBase free plans only allows "Google services". So if we use any other browser as our push notification server then we'll get an error. If we are on the Paid plan, we'll not get the error but will be charged a fare. So to avoid getting the error we check if our push notification server endpoint is a google/chrome service. See `index.js: line 131`.
 
 "Since I'm not using **Cloud Functions** in this project, I'll remove the *check done above (index.js:131)*". See [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21260322#overview) for more context.
+
+### Listen for Push Notification in the Service Worker
+
+When testing the Push Notification functionality as seen in this [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21260346#overview), we seen that the `/createPost` request is being fired twice. To solve this folloe this github thread [here](https://github.com/GoogleChrome/workbox/issues/1480#issuecomment-579948965).
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
@@ -506,3 +511,4 @@ FireBase free plans only allows "Google services". So if we use any other browse
 - [IDB Library](https://github.com/jakearchibald/idb#readme)
 - [web-push-library](https://github.com/web-push-libs/web-push#install)
 - [qs-libeary](https://github.com/ljharb/qs#readme)
+- [workbox-background-sync: duplicate POST requests #1480](https://github.com/GoogleChrome/workbox/issues/1480#issuecomment-579948965)

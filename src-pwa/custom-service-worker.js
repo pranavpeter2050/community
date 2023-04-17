@@ -102,14 +102,23 @@ if (backgroundSyncSupported) {
     if (event.request.url.endsWith('/createPost')) {
       // Clone the request to ensure it's safe to read when
       // adding to the Queue
-      const promiseChain = fetch(event.request.clone()).catch((err) => {
-        return createPostQueue.pushRequest({request: event.request});
-      });
+      if(!self.navigator.onLine) {
+        const promiseChain = fetch(event.request.clone()).catch((err) => {
+          return createPostQueue.pushRequest({request: event.request});
+        });
 
-      event.waitUntil(promiseChain);
+        event.waitUntil(promiseChain);
+      }
     }
   });
 }
+
+/*
+  events - push
+*/
+self.addEventListener('push', event => {
+  console.log("Push message received: ", event)
+})
 
 /* events - notification */
 self.addEventListener('notificationclick', event => {

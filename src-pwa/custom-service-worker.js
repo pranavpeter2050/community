@@ -118,6 +118,20 @@ if (backgroundSyncSupported) {
 */
 self.addEventListener('push', event => {
   console.log("Push message received: ", event)
+  if (event.data) {
+    let data = JSON.parse(event.data.text())
+    event.waitUntil(
+      self.registration.showNotification(
+        data.title,
+        {
+          body: data.body,
+          icon: 'icons/icon-128x128.png',
+          badge: 'icons/icon-128x128.png'
+        }
+      )
+    )
+
+  }
 })
 
 /* events - notification */

@@ -126,14 +126,14 @@ app.post('/createPost', (request, response) => {
           subscriptions.push(doc.data())
         });
         return subscriptions
-      }).then(subscriptios => {
+      }).then(subscriptions => {
         subscriptions.forEach(subscription => {
           // if (subscription.endpoint.startsWith('https://fcm.googleapis.com')) {
             const pushSubscription = {
               endpoint: subscription.endpoint,
               keys: {
-                auth: subscription.key.auth,
-                p256dh: subscription.key.p256dh
+                auth: subscription.keys.auth,
+                p256dh: subscription.keys.p256dh
               }
             };
 

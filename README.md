@@ -424,6 +424,8 @@ We'll be using the terminal to generate our Public & Private Keys. In order to a
 
 To use the above generated vapid keys, read the web-push docs [here](https://github.com/web-push-libs/web-push#using-vapid-key-for-applicationserverkey).
 
+We are using the [qs-libeary](https://github.com/ljharb/qs#readme) to convert the Push-subscription JSON object object to a *query-string*. We shouldn't need to install this package cause it already installed in Quasar projects.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
@@ -487,3 +489,5 @@ To use the above generated vapid keys, read the web-push docs [here](https://git
 - [Animate.css](https://animate.style/)
 - [Workbox](https://developer.chrome.com/docs/workbox/)
 - [IDB Library](https://github.com/jakearchibald/idb#readme)
+- [web-push-library](https://github.com/web-push-libs/web-push#install)
+- [qs-libeary](https://github.com/ljharb/qs#readme)

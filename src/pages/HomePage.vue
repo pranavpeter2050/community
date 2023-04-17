@@ -115,6 +115,8 @@
 import { defineComponent } from 'vue'
 import { date } from 'quasar'
 import { openDB } from 'idb'
+// let qs = require('qs')
+import qs from 'qs'
 
 export default defineComponent({
   name: 'HomePage',
@@ -241,8 +243,15 @@ export default defineComponent({
         userVisibleOnly: true
       }).then(newSubscription => {
         // console.log("newSubscription: ", newSubscription)
-        let newSubscriptionData = newSubscription.toJSON()
+        let newSubscriptionData = newSubscription.toJSON(),
+          newSubscriptionDataQS = qs.stringify(newSubscriptionData)
         console.log("newSubscriptionData: ", newSubscriptionData)
+        return this.$axios.post(`${ process.env.API }/createSubscription?${ newSubscriptionDataQS }`)
+      }).then(response => {
+        // console.log("response: ", response)
+        this.displayGrantedNotification()
+      }).catch(err => {
+        console.log("err: ", err)
       })
     },
     displayGrantedNotification() {

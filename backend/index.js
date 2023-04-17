@@ -116,7 +116,14 @@ app.post('/createPost', (request, response) => {
 /* api endpoint - createSubscription */
 app.post('/createSubscription', (request, response) => {
   response.set('Access-Control-Allow-Origin', '*')
-  console.log("request: ", request)
+  // console.log("request: ", request)
+  // console.log("request.query: ", request.query)
+  db.collection('subscription').add(request.query).then(docRef => {
+    response.send({
+      message: "Subscription added!",
+      postData: request.query
+    })
+  })
 })
 
 /* listen (port) */

@@ -146,7 +146,22 @@ self.addEventListener('notificationclick', event => {
     console.log("Goodbye button was clicked")
   }
   else {
-    console.log("Main noitification was clicked")
+    // console.log("Main noitification was clicked")
+    event.waitUntil(
+      clients.matchAll().then(clis => {
+        // console.log("clis: ", clis)
+        let clientUsingApp = clis.find(cli => {
+          return cli.visibilityState === 'visible'
+        })
+        if (clientUsingApp) {
+          clientUsingApp.navigate('/#/')
+          clientUsingApp.focus()
+        }
+        else {
+          clients.openWindow('/#/')
+        }
+      })
+    )
   }
   notification.close()
 })

@@ -203,9 +203,14 @@ export default defineComponent({
       this.locationLoading = false
     },
     locationError() {
+      let locationErrorMessage = 'Could not fetch your location.'
+      if (this.$q.platform.is.mac) {
+        locationErrorMessage += 'You might be able to fix this in System Preferences > Security & Privacy > Location Services'
+      }
+
       this.$q.dialog({
         title: 'Error',
-        message: 'Could not fetch your location.'
+        message: locationErrorMessage
       })
       this.locationLoading = false
     },

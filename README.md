@@ -458,6 +458,18 @@ When a post was created in Chrome, apparently, the notification from Firefox was
 
 Finally, if we try to create Post offline on Firefox, we find that it is not possible. Check [here](https://caniuse.com/background-sync) to confirm if Firefox supports `background-sync`.
 
+### Firefox - Fixing Location issue that might be seen in Mac Systems
+
+Even after granting the location acess in the Firefox browser, the user might see the Popup (dialog) saying *Could not fetch location*. This might be because the Location services is disable on their Mac systems.
+
+To improve UX, we check if the user is on a Mac system and then customize the Popup message to let the user know why they are facing the location fetch issue. We be using **Quasar's Platfor Detection** feature to detect if the user is using a Mac system.
+
+```javascript
+if (this.$q.platform.is.mac) {
+  errorMessage = 'Check if your Location Services is enabled in System Preferences'
+}
+```
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

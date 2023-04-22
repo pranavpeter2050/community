@@ -491,6 +491,23 @@ IE does **not** support PWA, service-workers etc. But we should be able to perfo
 
 Like Safari, IE also aggresssively cache "http" requests. So newly created post might not appear on the Home page at first. To solve for this, we need to make sure that every *"every Request URL to our Post-endpoint should be unique"*. Hence, a unique query string was added at the end of the `getPost` URL only for IE. See `HomePage.vue: line 147`.
 
+## Mobile Browsers - Testing
+
+We can test the app in two ways. First would be using Android Studio to setup a *Android Virtaul Device (AVD)* and other would be using a real Android device.
+
+### Developing on Android Emulator (AVD)
+
+Once the Emulator is setup, go to the **Setting** app and enable "**USB debugging**".
+Now jump to Chrome. Open up the dev-tools > More tools > Remote devices. If this is not working try opening the below URL on a new tab.
+
+```javascript
+chrome://inspect/#devices
+```
+
+Click on *Port forwarding* and add the port of the local quasar app, in this case `9200` and add the URL that we want to use on the emulator i.e. `localhost:9200`. Ensure **Port Forwarding** is checked and click on **Done**.
+
+Make sure that the local frontend and backend are running before trying to test on the emulator.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
@@ -517,6 +534,9 @@ Like Safari, IE also aggresssively cache "http" requests. So newly created post 
 - The "app Install Banner" is not showing when visiting the Firebase Prod [app](https://community-9b01c.web.app).
 - The fallback for *Camera access denied* i.e. Uploading an image instead is not working. Will need to check that later.
 
+## Skipped Sections
+
+Sections: 12, 23, 24.
 ## Reference
 
 - [Create an Instagram Clone with Vue JS, Quasar & Firebase - in 4 HOURS! (1/6)](https://www.youtube.com/watch?v=9tyFBchdb00&list=PLAiDzIdBfy8h6HgfQg3namagsCUT0Y2Bs)

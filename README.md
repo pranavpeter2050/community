@@ -476,6 +476,10 @@ Push notifications are not supported in Safari. [Reference](https://caniuse.com/
 Safari also doesn't dupport the `beforeinstallprompt` event.So no *Home screen Installation* for Safari.
 `background-sync` is not supported by Safari, so *NO offline post creation*.
 
+### Safaring - Fixing "New post not shown in Homepage sometimes" issue
+
+This issue apparently happens due to Safari's **overly aggressive caching** for AJAX requests. To solve this, we reload the page after adding a little delay inside the `then()` block in `createPost` api axios call. See `CameraPage.vue: line 236`.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

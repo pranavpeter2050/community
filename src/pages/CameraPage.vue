@@ -233,6 +233,11 @@ export default defineComponent({
           ]
         })
         this.$q.loading.hide()
+        if (this.$q.platform.is.safari) {
+          setTimeout(() => {
+            window.location.href = '/'
+          }, 1000)
+        }
       }).catch(error => {
         console.log("error: ", error)
         // check if user is offline using "navigator.onLine"

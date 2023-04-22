@@ -470,6 +470,12 @@ if (this.$q.platform.is.mac) {
 }
 ```
 
+### Safari - Testing
+
+Push notifications are not supported in Safari. [Reference](https://caniuse.com/push-api).
+Safari also doesn't dupport the `beforeinstallprompt` event.So no *Home screen Installation* for Safari.
+`background-sync` is not supported by Safari, so *NO offline post creation*.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

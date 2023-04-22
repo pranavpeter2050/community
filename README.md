@@ -446,6 +446,18 @@ FireBase free plans only allows "Google services". So if we use any other browse
 
 When testing the Push Notification functionality as seen in this [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21260346#overview), we seen that the `/createPost` request is being fired twice. To solve this folloe this github thread [here](https://github.com/GoogleChrome/workbox/issues/1480#issuecomment-579948965).
 
+## Desktop Browsers - Testing & Fixing
+
+Prod Firebase app URL: <https://community-9b01c.web.app>
+
+### Firefox testing
+
+If we try to access the above URL in Firefox, we are not ablew to see the appInstall prompt. If we visit the **Mozilla Mdn web docs** [here](https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeinstallprompt_event#browser_compatibility), we can see that Firefox doesn't support the `beforeinstallprompt` event.
+
+When a post was created in Chrome, apparently, the notification from Firefox was not shown. Check [here](https://caniuse.com/push-api). From there, we see that all three browsers, chrome, edge, firefox need to *Require full browser to be running to receive messages*.
+
+Finally, if we try to create Post offline on Firefox, we find that it is not possible. Check [here](https://caniuse.com/background-sync) to confirm if Firefox supports `background-sync`.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
@@ -469,6 +481,7 @@ When testing the Push Notification functionality as seen in this [video](https:/
 - The Dialog says post not created in camerapage even though offline post is working fine. (fixed `CameraPage.vue: line 95`).
 - the `getPosts()` methos not working as desired inside `onActivated()` hook. So for time-being placed back inside the `created()` hook in HomePage.vue. `activated()` taught in this [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21110176#overview).
 - When the Notification was closed, the code did not console.log the messaged as expected. Refernce [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21110238)
+- The "app Install Banner" is not showing when visiting the Firebase Prod [app](https://community-9b01c.web.app).
 
 ## Reference
 

@@ -480,6 +480,17 @@ Safari also doesn't dupport the `beforeinstallprompt` event.So no *Home screen I
 
 This issue apparently happens due to Safari's **overly aggressive caching** for AJAX requests. To solve this, we reload the page after adding a little delay inside the `then()` block in `createPost` api axios call. See `CameraPage.vue: line 236`.
 
+### Edge & Internet Explorer - Testing
+
+If you're on a Mac system, you'll need to install **VirtaulBox** and set it up with Windows 10 for testing the app in Edge and Internet Explorer browsers. The app works fine on Edge.
+
+While there maybe some compatibility issues between Internet Explorer and our app-depenceies like IDB. Luckily, Quasar can help us transpile our dependency code to support IE. Check [here](https://quasar.dev/quasar-cli-webpack/quasar-config-js#property-build) to see how to use `transpileDependencies` to resolve our issue.
+
+Since we, are using Vite with this project the above solution might not work. So I need to check for a work-around.
+IE does **not** support PWA, service-workers etc. But we should be able to perform the basic web app functionalities with IE.
+
+Like Safari, IE also aggresssively cache "http" requests. So newly created post might not appear on the Home page at first. To solve for this, we need to make sure that every *"every Request URL to our Post-endpoint should be unique"*. Hence, a unique query string was added at the end of the `getPost` URL only for IE. See `HomePage.vue: line 147`.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.
@@ -504,6 +515,7 @@ This issue apparently happens due to Safari's **overly aggressive caching** for 
 - the `getPosts()` methos not working as desired inside `onActivated()` hook. So for time-being placed back inside the `created()` hook in HomePage.vue. `activated()` taught in this [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21110176#overview).
 - When the Notification was closed, the code did not console.log the messaged as expected. Refernce [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21110238)
 - The "app Install Banner" is not showing when visiting the Firebase Prod [app](https://community-9b01c.web.app).
+- The fallback for *Camera access denied* i.e. Uploading an image instead is not working. Will need to check that later.
 
 ## Reference
 

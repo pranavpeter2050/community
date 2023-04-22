@@ -143,7 +143,13 @@ export default defineComponent({
     },
     getPosts() {
       this.loadingPosts = true
-      this.$axios.get(`${ process.env.API }/posts`).then(response => {
+
+      // add a unique timestamp to the Request URL for IE so that requests don't get cached
+      let timestamp = ''
+      if (this.$q.platform.is.ie) {
+        timestamp = '?timestamp=' + Date.now()
+      }
+      this.$axios.get(`${ process.env.API }/posts${ timestamp }`).then(response => {
         this.posts = response.data
         this.loadingPosts = false
         if (!navigator.onLine) {

@@ -89,9 +89,8 @@ export default {
   },
   mounted() {
     let neverShowAppInstallBanner = this.$q.localStorage.getItem("neverShowAppInstallBanner")
-    console.log("hello")
+
     if (!neverShowAppInstallBanner) {
-      console.log("hello amigo")
       window.addEventListener('beforeinstallprompt', (e) => {
         // Prevent the mini-infobar from appearing on mobile
         e.preventDefault();
@@ -126,4 +125,9 @@ export default {
 .q-footer
   .q-tab__icon
     font-size: 30px
+
+.platform-ios
+  .q-footer
+    padding-bottom: constant(safe-area-inset-bottom)
+    padding-bottom: env(safe-area-inset-bottom)
 </style>

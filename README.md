@@ -491,7 +491,7 @@ IE does **not** support PWA, service-workers etc. But we should be able to perfo
 
 Like Safari, IE also aggresssively cache "http" requests. So newly created post might not appear on the Home page at first. To solve for this, we need to make sure that every *"every Request URL to our Post-endpoint should be unique"*. Hence, a unique query string was added at the end of the `getPost` URL only for IE. See `HomePage.vue: line 147`.
 
-## Mobile Browsers - Testing
+## Android Mobile Browsers - Testing
 
 We can test the app in two ways. First would be using Android Studio to setup a *Android Virtaul Device (AVD)* and other would be using a real Android device.
 
@@ -515,6 +515,16 @@ Notes on videos 204 to 206 go here.
 The `background-sync` for the `createPost` API endpoint only works when the user has previously made a successful request to the endpoint while on the network i.e. while being online. So, we use localstorage to set a value true once the user has made a successful `createPost` request in the `CameraPage.vue`. Then we can check for this value before showing the *Post created offline* message in our `catch()` block. See `CameraPage.vue: lines 220, 231, 249`.
 
 Apparently, the above issue occurs on Andoid devices (Chrome to be specific), but works fine on Desktop Chrome browser i.e. the `background-sync` records the `createPost` request as expected, which doesn't happen in Andoid devices. So we need to tweak the *localstorage check* to only work for Andoid devices.
+
+## iOS Mobile - Developing, Testing & Fixing
+
+The app doesn't show the "Allow Notifications" banner as iOS and Safari doesn't support Push notifications. Also, they don't support `background-sync`, so we'll not be able to create posts offline in iOS & Safari. They do support **caching and pre-caching** so we should be able to load our app and see the existing posts offline.
+Although iOS & Safari support "Home screen installation", it doesn't support the `beforeinstallprompt` event. There is no way to trigger a "Native Home Installation Pop-up", but the user can add the app to the homescreen manually.
+
+### Fixing Footer for iOS Safari
+
+The Footer on iOS/Safari seems to be very narrow and colliding with the bottom notch/navigation bar. Quasar has documented some fix for this issue [here](https://quasar.dev/quasar-cli-vite/developing-capacitor-apps/troubleshooting-and-tips#status-bar-and-notch-safe-areas).
+The CSS style fix for footer might not work. If that's the case check this [solution](https://stackoverflow.com/a/57927982) on Stackoverflow. See `index.html: line 10`.
 
 ## Interesting
 

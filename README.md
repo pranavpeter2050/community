@@ -526,6 +526,10 @@ Although iOS & Safari support "Home screen installation", it doesn't support the
 The Footer on iOS/Safari seems to be very narrow and colliding with the bottom notch/navigation bar. Quasar has documented some fix for this issue [here](https://quasar.dev/quasar-cli-vite/developing-capacitor-apps/troubleshooting-and-tips#status-bar-and-notch-safe-areas).
 The CSS style fix for footer might not work. If that's the case check this [solution](https://stackoverflow.com/a/57927982) on Stackoverflow. See `index.html: line 10`.
 
+### Fixing the Camera & Post Image button
+
+The fix for Camera grabbing a freeze frame when allowed access to camera wasa done in the begining itselt. Just need to add `playsinline` attribute on `<video>...</video>` element in `CamearPage.vue`. You can find this [solution](https://stackoverflow.com/a/42236446) on Stackeroverflow.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

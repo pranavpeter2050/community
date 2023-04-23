@@ -221,6 +221,7 @@ export default defineComponent({
 
       if (this.$q.platform.is.android && !postCreated && !navigator.onLine) {
         this.addPostError()
+        this.$q.loading.hide()
       }
       else {
 

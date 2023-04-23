@@ -555,6 +555,7 @@ The fix for Camera grabbing a freeze frame when allowed access to camera wasa do
 - When the Notification was closed, the code did not console.log the messaged as expected. Refernce [video](https://www.udemy.com/course/pwa-with-vuejs-quasar-firebase/learn/lecture/21110238)
 - The "app Install Banner" is not showing when visiting the Firebase Prod [app](https://community-9b01c.web.app).
 - The fallback for *Camera access denied* i.e. Uploading an image instead is not working. Will need to check that later.
+- After creating a Post, my backend express server is crashing. Hence, when we are redirected to the Home page after creating Post, we are unable to see the newly created post. Since the backend-server is down/crashed, attempting to create a new post again should also fail.
 
 ## Skipped Sections
 

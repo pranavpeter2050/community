@@ -60,6 +60,7 @@ app.post('/createPost', (request, response) => {
 
   let fields = {}
   let fileData = {}
+  let imageUrl
 
   busboyy.on('file', (name, file, info) => {
     const { filename, encoding, mimeType } = info;
@@ -102,6 +103,7 @@ app.post('/createPost', (request, response) => {
     )
 
     function createDocument(uploadedFile) {
+      imageUrl = `https://firebasestorage.googleapis.com/v0/b/${ bucket.name }/o/${ uploadedFile.name }?alt=media&token=${ uuid }`
 
       // Add a new document in collection "posts"
       db.collection('posts').doc(fields.id).set({
@@ -109,7 +111,7 @@ app.post('/createPost', (request, response) => {
         caption: fields.caption,
         location: fields.location,
         date: parseInt(fields.date),
-        imageUrl: `https://firebasestorage.googleapis.com/v0/b/${ bucket.name }/o/${ uploadedFile.name }?alt=media&token=${ uuid }`
+        imageUrl: imageUrl
       }).then(() => {
         sendPushNotification()
         response.send("post id: " + fields.id)
@@ -137,11 +139,14 @@ app.post('/createPost', (request, response) => {
               }
             };
 
+            // content of the push message
             let pushContent = {
               title: 'New Community Post!',
               body: 'New Post dropped. Check it out!',
-              openUrl: '/#/'
+              openUrl: '/#/',
+              imageUrl: imageUrl
             }
+            // sending push message to for service worker to receive
             let pushContentStringified = JSON.stringify(pushContent)
             webpush.sendNotification(pushSubscription, pushContentStringified);
           // }

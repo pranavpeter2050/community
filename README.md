@@ -508,6 +508,14 @@ Click on *Port forwarding* and add the port of the local quasar app, in this cas
 
 Make sure that the local frontend and backend are running before trying to test on the emulator.
 
+### Developing on a Real Android device
+
+Notes on videos 204 to 206 go here.
+
+The `background-sync` for the `createPost` API endpoint only works when the user has previously made a successful request to the endpoint while on the network i.e. while being online. So, we use localstorage to set a value true once the user has made a successful `createPost` request in the `CameraPage.vue`. Then we can check for this value before showing the *Post created offline* message in our `catch()` block. See `CameraPage.vue: lines 220, 231, 249`.
+
+Apparently, the above issue occurs on Andoid devices (Chrome to be specific), but works fine on Desktop Chrome browser i.e. the `background-sync` records the `createPost` request as expected, which doesn't happen in Andoid devices. So we need to tweak the *localstorage check* to only work for Andoid devices.
+
 ## Interesting
 
 - `toDataURL()` is used to convert to image to base64 string. See `CameraPage: line 88`.

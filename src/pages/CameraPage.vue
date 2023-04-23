@@ -216,43 +216,58 @@ export default defineComponent({
     },
     addPost() {
       this.$q.loading.show()
-      let formData = new FormData()
-      formData.append('id', this.post.id)
-      formData.append('caption', this.post.caption)
-      formData.append('location', this.post.location)
-      formData.append('date', this.post.date)
-      formData.append('file', this.post.photo, this.post.id + '.png')
 
-      this.$axios.post(`${ process.env.API }/createPost`, formData).then(response => {
-        console.log("response: ", response)
-        this.$router.push('/')
-        this.$q.notify({
-          message: 'Post created!',
-          actions: [
-            { label: 'Dismiss', color: 'white' }
-          ]
-        })
-        this.$q.loading.hide()
-        if (this.$q.platform.is.safari) {
-          setTimeout(() => {
-            window.location.href = '/'
-          }, 1000)
-        }
-      }).catch(error => {
-        console.log("error: ", error)
-        // check if user is offline using "navigator.onLine"
-        if (!navigator.onLine && this.backgorundSyncSupported) {
-          // redirect to Homepage
-          this.$q.notify('Post created offline!')
+      let postCreated = this.$q.localStorage.getItem('postCreated')
+
+      if (this.$q.platform.is.android && !postCreated && !navigator.onLine) {
+        this.addPostError()
+      }
+      else {
+
+        let formData = new FormData()
+        formData.append('id', this.post.id)
+        formData.append('caption', this.post.caption)
+        formData.append('location', this.post.location)
+        formData.append('date', this.post.date)
+        formData.append('file', this.post.photo, this.post.id + '.png')
+
+        this.$axios.post(`${ process.env.API }/createPost`, formData).then(response => {
+          console.log("response: ", response)
+          this.$q.localStorage.set('postCreated', true)
           this.$router.push('/')
-        }
-        else {
-          this.$q.dialog({
-            title: 'Error',
-            message: 'Sorry, could not create post!'
+          this.$q.notify({
+            message: 'Post created!',
+            actions: [
+              { label: 'Dismiss', color: 'white' }
+            ]
           })
-        }
-        this.$q.loading.hide()
+          this.$q.loading.hide()
+          if (this.$q.platform.is.safari) {
+            setTimeout(() => {
+              window.location.href = '/'
+            }, 1000)
+          }
+        }).catch(error => {
+          console.log("error: ", error)
+          // check if user is offline using "navigator.onLine"
+          // the "postCreated" means that the user has created atleast one post while they were online
+          if (!navigator.onLine && this.backgorundSyncSupported && postCreated) {
+            // redirect to Homepage
+            this.$q.notify('Post created offline!')
+            this.$router.push('/')
+          }
+          else {
+            this.addPostError()
+          }
+          this.$q.loading.hide()
+        })
+
+      }
+    },
+    addPostError() {
+      this.$q.dialog({
+        title: 'Error',
+        message: 'Sorry, could not create post!'
       })
     }
   },
